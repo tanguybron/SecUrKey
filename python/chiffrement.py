@@ -2,27 +2,15 @@ import random
 import string
 
 def generate_password(letter,digits,punctuation):
-    if(letter and not digits and not punctuation) :
-        chars = string.ascii_letters
+    chars=''
+    if(letter) :
+        chars += string.ascii_letters
 
-    elif(letter and digits and not punctuation) :
-        chars = string.ascii_letters + string.digits
+    if(digits ) :
+        chars +=string.digits
         
-
-    elif(letter and not digits and punctuation) :
-        chars = string.ascii_letters + string.punctuation
-
-    elif(letter and digits and punctuation) :
-        chars = string.ascii_letters + string.digits + string.punctuation        
-
-    elif(not letter and digits and not punctuation) :
-        chars = string.digits
-
-    elif(not letter and digits and punctuation) :
-        chars = string.digits + string.punctuation
-
-    elif(not letter and not digits and punctuation) :
-        chars = string.punctuation
+    if(punctuation) :
+        chars += string.punctuation
 
     print("len:"+str(len(chars))+"\n")
     mdp=''
