@@ -1,19 +1,23 @@
 import mysql.connector
 
-connection_params = {
-    'host': "localhost",
-    'user': "root",
-    'password': "azerty",
-    'database': "MdPManager",
-}
+def get_hash_user(email_address):
+    connection_params = {
+        'host': "localhost",
+        'user': "root",
+        'password': "azerty",
+        'database': "MdPManager",
+    }
+    request='SELECT Hash_MdP FROM utilisateurs WHERE Adresse_Mail="'+str(email_address)+'";'
+    with mysql.connector.connect(**connection_params) as db :
+        with db.cursor(buffered=True) as c:
+            c.execute(request)
+            resultat = str(c.fetchall())
+            resultat = resultat.split("'")[1]
 
-with mysql.connector.connect(**connection_params) as db :
-    with db.cursor(buffered=True) as c:
-        c.execute("SELECT Hash_MdP FROM utilisateurs;")
-        # db.commit()
-        resultats = c.fetchall()
-        print(resultats)
-        # for utilisateur in resultats:
-        #     print(utilisateur)
+    db.close()
+    return resultat
 
-db.close()
+## Tests
+# res = get_hash_user("tanguy.bron@test.com")
+# print(res)
+# get_hash_user("armand.vanel@test.com")
