@@ -16,6 +16,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    height: 10vh;
 }
 
 .logo {
@@ -41,4 +42,8 @@ body {
     width: 7.5vw;
     color: #0E50E3;
     background-color: white;
+}
+
+.main {
+    height: 90vh;
 }
