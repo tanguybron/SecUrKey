@@ -9,6 +9,8 @@ body {
     background: linear-gradient(171.32deg, #0E50E3 0%, #143268 100%);
     color: white;
     font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    overflow: hidden;
 }
 
 .navbar {
@@ -16,7 +18,6 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    height: 10vh;
 }
 
 .logo {
@@ -45,5 +46,55 @@ body {
 }
 
 .main {
-    height: 90vh;
+    
+}
+
+.text{
+    position: absolute;
+    top: 50vh;
+    margin-inline: 50px;
+    transform: translateY(-50%);
+}
+
+.text p{
+    font-size: 50px;
+}
+
+.white-bouton{
+    text-align: center;
+    padding: 7.5px;
+    border: 3px solid white;
+    border-radius: 100px;
+    width: 10vw;
+    color: white;
+}
+
+.text .link{
+    padding: 50px;
+}
+
+.text .white-bouton{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#vault {
+    width: 80vw;
+    height: 40vw;
+    position: absolute;
+    top: 15%;
+    left: 40%;
+    background-image: url("../images/vault.png");
+    background-size: contain;
+}
+
+#key {
+    width: 50vw;
+    height: 25vw;
+    position: absolute;
+    top: 45%;
+    left: 35%;
+    background-image: url("../images/key.png");
+    background-size: contain;
 }
