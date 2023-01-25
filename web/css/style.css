@@ -8,11 +8,13 @@ body {
     width: 100vw;
     background: linear-gradient(171.32deg, #0E50E3 0%, #143268 100%);
     color: white;
+    font-family: 'Inter', sans-serif;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
+    padding: 20px;
 }
 
 .bouton{
