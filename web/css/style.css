@@ -14,10 +14,31 @@ body {
 .navbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px;
 }
 
-.bouton{
+.logo {
+    font-size: 40px;
+}
+
+.boutons {
+    display: flex;
+}
+
+.link {
     text-decoration: none;
-    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.bouton{
+    margin-inline: 10px;
+    text-align: center;
+    padding: 7.5px;
+    border-radius: 100px;
+    width: 7.5vw;
+    color: #0E50E3;
+    background-color: white;
 }
