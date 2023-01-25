@@ -7,4 +7,15 @@ body {
     height: 100vh;
     width: 100vw;
     background: linear-gradient(171.32deg, #0E50E3 0%, #143268 100%);
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bouton{
+    text-decoration: none;
+    color: white;
 }
