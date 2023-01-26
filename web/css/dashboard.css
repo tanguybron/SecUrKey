@@ -94,3 +94,34 @@ body {
     font-weight: 700;
     border: none;
 }
+
+.content {
+    width: 100%;
+    height: 85vh;
+}
+
+.account {
+    background-color: #0E50E3;
+    margin: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    text-decoration: none;
+    color: white;
+    font-family: "Inter",sans-serif;
+    font-weight: 700;
+}
+
+.img-logo {
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+}
+
+.info {
+    padding: 10px;
+}
+
+.email {
+    font-weight: 300;
+}
