@@ -13,7 +13,5 @@ window.onload = function() {
         }else{
             console.log("mdp différents");
         }
-        //console.log(CryptoJS.SHA256("mdpsecret").toString());
-        // code to execute when button is clicked
     });
 };
