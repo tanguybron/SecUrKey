@@ -1,6 +1,3 @@
-var pass = "mdpsecret";
-console.log("in");
-const button = document.querySelector('.bouton');
 window.onload = function() {
     const button = document.querySelector('.bouton');
     button.addEventListener('click', function() {
