@@ -34,6 +34,13 @@ body {
     padding: 10px;
     border-radius: 10px;
     width: 20vw;
+    font-family: "Inter",sans-serif;
+    font-weight: 700;
+    border: none;
+}
+
+input:active, input:focus {
+    outline: none;
 }
 
 .bouton {
@@ -46,4 +53,6 @@ body {
     background-color: rgba(0, 0, 0, 0);
     margin: 50px;
     font-size: 17px;
+    font-family: "Inter",sans-serif;
+    font-weight: 700;
 }
