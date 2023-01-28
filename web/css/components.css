@@ -1,0 +1,44 @@
+.filled-button {
+    margin-inline: 10px;
+    text-align: center;
+    padding: 7.5px;
+    border-radius: 100px;
+    width: 7.5vw;
+    color: #0E50E3;
+    background-color: white;
+}
+
+.border-button {
+    text-align: center;
+    padding: 7.5px;
+    border: 3px solid white;
+    border-radius: 100px;
+    width: 10vw;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    margin: 50px;
+    font-size: 17px;
+    font-family: "Inter",sans-serif;
+    font-weight: 700;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form input{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    width: 20vw;
+    font-family: "Inter",sans-serif;
+    font-weight: 700;
+    border: none;
+}
+
+input:active, input:focus {
+    outline: none;
+}
