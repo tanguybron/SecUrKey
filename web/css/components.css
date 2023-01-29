@@ -42,3 +42,13 @@
 input:active, input:focus {
     outline: none;
 }
+
+.cross-button {
+    text-decoration: none;
+    border: none;
+    background:rgba(0, 0, 0, 0);
+    color: white;
+    font-family: "Inter",sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+}
