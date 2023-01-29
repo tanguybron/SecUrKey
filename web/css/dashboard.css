@@ -65,6 +65,15 @@ body {
     background-color: #143268;
 }
 
+.navbar-single {
+    height: 15vh;
+    width: 100%;
+    background-color: #143268;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .nav-title {
     display: flex;
     justify-content: space-between;
@@ -124,4 +133,32 @@ body {
 
 .email {
     font-weight: 300;
+}
+
+.box {
+    background-color: #0E50E3;
+    margin: 20px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.global-box p {
+    margin-inline: 20px;
+    margin-bottom: -20px;
+    color: black;
+}
+
+.slider {
+    appearance: none;
+    width: 80%;
+    height: 10px;
+    border-radius: 10px;
+    background: white;
+}
+
+#length {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
 }
