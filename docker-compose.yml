@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web-app:
+    build: ./
+    ports:
+      - "8080:80"
+    networks:
+      - app_net
+
+
+networks:
+  app_net:
