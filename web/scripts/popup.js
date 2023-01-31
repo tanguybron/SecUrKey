@@ -37,3 +37,11 @@ function ImagePopup(){
 function CloseImagePopup(){
     document.querySelector("#image-popup").style.display = "none";
 }
+
+function WebsitePopup(){
+    document.querySelector("#website-popup").style.display = "flex";
+}
+
+function CloseWebsitePopup(){
+    document.querySelector("#website-popup").style.display = "none";
+}
