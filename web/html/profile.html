@@ -25,7 +25,7 @@
 
             <div class="box">
                 <div>
-                    <img class="profile-img" src="../images/Scar.jpeg" alt="">
+                    <button class="image-button" onclick="ImagePopup()"><img class="profile-img" src="../images/Scar.jpeg" alt=""></button>
                 </div>
                 <div class="info">
                     <h2 id="title">Profile informations</h2>
@@ -33,44 +33,96 @@
                         <p>Username</p>
                         <div class="elts">
                             <p>Scari94</p>
-                            <button class="edit">Edit</button>
+                            <button class="edit" onclick="UsernamePopup()">Edit</button>
                         </div>
                     </div>
                     <div class="params">
                         <p>Email</p>
                         <div class="elts">
                             <p>mail@mail.com</p>
-                            <button class="edit">Edit</button>
+                            <button class="edit" onclick="EmailPopup()">Edit</button>
                         </div>
                     </div>
                     <div class="params">
                         <p>Password</p>
                         <div class="elts">
                             <p>*******</p>
-                            <button class="edit" onclick="popup()">Edit</button>
+                            <button class="edit" onclick="PasswordPopup()">Edit</button>
                         </div>
                     </div>
                 </div>
                 <div class="buttons">
-                    <button class="save-button">Save</button>
-                    <button class="save-button">Delete</button>
+                    <button class="save-button" onclick="DeletePopup()">Delete Account</button>
                 </div>
 
             </div>
 
-            <div class="popup">
-                    <div class="popup-content">
-                        <div class="header">
-                            <h1>Edit Password</h1>
-                            <button class="close-button" onclick="ClosePopup()">X</button>
-                        </div>
-                        <div class="form-popup">
-                            <input type="password" name="" id="" placeholder="Current Password" required>
-                            <input type="password" name="" id="" placeholder="New Password" required>
-                            <input type="password" name="" id="" placeholder="Verify New Password" required>
-                        </div>
-                        <button class="black-button">Save</button>
+            <div class="popup" id="password-popup">
+                <form class="popup-content">
+                    <div class="header">
+                        <h1>Edit Password</h1>
+                        <button class="close-button" onclick="ClosePasswordPopup()">X</button>
                     </div>
+                    <div class="form-popup">
+                        <input type="password" name="" id="" placeholder="Current Password" required>
+                        <input type="password" name="" id="" placeholder="New Password" required>
+                        <input type="password" name="" id="" placeholder="Verify New Password" required>
+                    </div>
+                    <button class="black-button" type="submit">Save</button>
+                </form>
+            </div>
+
+            <div class="popup" id="email-popup">
+                <form class="popup-content">
+                    <div class="header">
+                        <h1>Edit Email</h1>
+                        <button class="close-button" onclick="CloseEmailPopup()">X</button>
+                    </div>
+                    <div class="form-popup">
+                        <input type="email" name="" id="" placeholder="New Email" required>
+                        <input type="email" name="" id="" placeholder="Verify New Email" required>
+                    </div>
+                    <button class="black-button" type="submit">Save</button>
+                </form>
+            </div>
+
+            <div class="popup" id="username-popup">
+                <form class="popup-content">
+                    <div class="header">
+                        <h1>Edit Username</h1>
+                        <button class="close-button" onclick="CloseUsernamePopup()">X</button>
+                    </div>
+                    <div class="form-popup">
+                        <input type="text" name="" id="" placeholder="New Username" required>
+                    </div>
+                    <button class="black-button" type="submit">Save</button>
+                </form>
+            </div>
+
+            <div class="popup" id="delete-popup">
+                <div class="popup-content">
+                    <div class="header">
+                        <h1>Delete Account</h1>
+                        <button class="close-button" onclick="CloseDeletePopup()">X</button>
+                    </div>
+                    <div class="form-popup">
+                        <h2>Are you sure you want to delete your account ?</h2>
+                    </div>
+                    <button class="red-button" type="submit">Yes, I want to DELETE my account</button>
+                </div>
+            </div>
+
+            <div class="popup" id="image-popup">
+                <div class="popup-content">
+                    <div class="header">
+                        <h1>Change Picture</h1>
+                        <button class="close-button" onclick="CloseImagePopup()">X</button>
+                    </div>
+                    <div class="form-popup">
+                        <input type="file" accept="image/*"/>
+                    </div>
+                    <button class="black-button" type="submit">Save</button>
+                </div>
             </div>
         
         </div>
