@@ -1,2 +1,2 @@
-FROM httpd:latest
-COPY ./web/ /usr/local/apache2/htdocs/
+FROM php:7.1.2-apache 
+RUN docker-php-ext-install mysqli
