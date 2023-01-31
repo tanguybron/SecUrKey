@@ -9,7 +9,7 @@
         </style>
         <title>Passwords</title>
         <link rel="stylesheet" href="../css/dashboard.css">
-        <link rel="stylesheet" href="../css/passwords.css">
+        <link rel="stylesheet" href="../css/profile.css">
         <link rel="stylesheet" href="../css/components.css">
     </head>
     <body>
@@ -23,8 +23,57 @@
 
         <div class="page">
 
-            
+            <div class="box">
+                <div>
+                    <img class="profile-img" src="../images/Scar.jpeg" alt="">
+                </div>
+                <div class="info">
+                    <h2 id="title">Profile informations</h2>
+                    <div class="params">
+                        <p>Username</p>
+                        <div class="elts">
+                            <p>Scari94</p>
+                            <button class="edit">Edit</button>
+                        </div>
+                    </div>
+                    <div class="params">
+                        <p>Email</p>
+                        <div class="elts">
+                            <p>mail@mail.com</p>
+                            <button class="edit">Edit</button>
+                        </div>
+                    </div>
+                    <div class="params">
+                        <p>Password</p>
+                        <div class="elts">
+                            <p>*******</p>
+                            <button class="edit" onclick="popup()">Edit</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="save-button">Save</button>
+                    <button class="save-button">Delete</button>
+                </div>
+
+            </div>
+
+            <div class="popup">
+                    <div class="popup-content">
+                        <div class="header">
+                            <h1>Edit Password</h1>
+                            <button class="close-button" onclick="ClosePopup()">X</button>
+                        </div>
+                        <div class="form-popup">
+                            <input type="password" name="" id="" placeholder="Current Password" required>
+                            <input type="password" name="" id="" placeholder="New Password" required>
+                            <input type="password" name="" id="" placeholder="Verify New Password" required>
+                        </div>
+                        <button class="black-button">Save</button>
+                    </div>
+            </div>
         
         </div>
+        <script src="../scripts/popup.js"></script>
     </body>
 </html>

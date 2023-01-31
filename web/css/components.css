@@ -51,4 +51,71 @@ input:active, input:focus {
     font-family: "Inter",sans-serif;
     font-weight: 700;
     font-size: 20px;
+    display: block;
+}
+
+.save-button {
+    text-align: center;
+    padding: 7.5px;
+    border: 2px solid white;
+    border-radius: 100px;
+    width: 10vw;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    margin: 50px;
+    font-size: 17px;
+    font-family: "Inter",sans-serif;
+    font-weight: 500;
+}
+
+.edit {
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: none;
+    font-family: "Inter",sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+.form-popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-popup input{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    width: 20vw;
+    font-family: "Inter",sans-serif;
+    font-weight: 700;
+    border: 2px solid black;
+}
+
+.close-button {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid black;
+    border-radius: 50%;
+    font-size: 17px;
+    font-family: "Inter",sans-serif;
+    font-weight: 700;
+}
+
+.black-button {
+    text-align: center;
+    padding: 7.5px;
+    border: 2px solid black;
+    border-radius: 100px;
+    width: 10vw;
+    color: black;
+    background-color: rgba(0, 0, 0, 0);
+    margin-top: 20px;
+    font-size: 17px;
+    font-family: "Inter",sans-serif;
+    font-weight: 500;
 }
