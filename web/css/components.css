@@ -57,9 +57,10 @@ input:active, input:focus {
 .save-button {
     text-align: center;
     padding: 7.5px;
+    padding-inline: 10px;
     border: 2px solid white;
     border-radius: 100px;
-    width: 10vw;
+    /* width: 10vw; */
     color: white;
     background-color: rgba(0, 0, 0, 0);
     margin: 50px;
@@ -113,6 +114,20 @@ input:active, input:focus {
     border-radius: 100px;
     width: 10vw;
     color: black;
+    background-color: rgba(0, 0, 0, 0);
+    margin-top: 20px;
+    font-size: 17px;
+    font-family: "Inter",sans-serif;
+    font-weight: 500;
+}
+
+.red-button {
+    text-align: center;
+    padding: 7.5px;
+    border: 2px solid red;
+    border-radius: 100px;
+    padding-inline: 10px;
+    color: red;
     background-color: rgba(0, 0, 0, 0);
     margin-top: 20px;
     font-size: 17px;
