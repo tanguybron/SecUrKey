@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    overflow: hidden;
+    display: flex;
+    color: white;
+}
+
+.menu {
+    height: 100vh;
+    width: 25vw;
+    background: linear-gradient(171.32deg, #0E50E3 0%, #143268 100%);
+}
+
+.logo {
+    margin: 20px;
+    font-size: 40px;
+}
+
+.boutons {
+    display: flex;
+    flex-direction: column;
+}
+
+.boutons a {
+    text-decoration: none;
+    margin-inline: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    color:white;
+    text-align: left;
+    font-family: "Inter",sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.boutons a.active {
+    background-color: #143268;
+}
+
+.page {
+    width: 75vw;
+    height: 100%;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+      </style>
+    <title>Join</title>
+    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <!-- Ajout des scripts nécessaires pour le bon fonctionnement du hachage :  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script> <!-- pour avoir le module crypto-js  -->
+    <script type="text/javascript" src="../scripts/hash_calculator.js"></script>
+</head>
+<body>
+    <h1 class="logo">SecUrKey</h1>
+    <div class="form">
+        <input type="email" name="email" id="email" placeholder="Email" required>
+        <input type="text" name="username" id="username" placeholder="Username" required>
+        <input type="password" name="password" id="password" placeholder="Password" required>
+        <input type="password" name="verifpassword" id="verifpassword" placeholder="Verify password" required>
+    </div>
+    <input type="submit" value="Create" class="border-button">
+
+</body>
+</html>
