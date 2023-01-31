@@ -10,6 +10,13 @@
     justify-content: center;
 }
 
+.image-button {
+    height: 150px;
+    width: 150px;
+    border: none;
+    border-radius: 10px;
+}
+
 .profile-img {
     height: 150px;
     width: 150px;

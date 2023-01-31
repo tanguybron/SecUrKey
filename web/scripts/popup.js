@@ -29,3 +29,11 @@ function DeletePopup(){
 function CloseDeletePopup(){
     document.querySelector("#delete-popup").style.display = "none";
 }
+
+function ImagePopup(){
+    document.querySelector("#image-popup").style.display = "flex";
+}
+
+function CloseImagePopup(){
+    document.querySelector("#image-popup").style.display = "none";
+}

@@ -25,7 +25,7 @@
 
             <div class="box">
                 <div>
-                    <img class="profile-img" src="../images/Scar.jpeg" alt="">
+                    <button class="image-button" onclick="ImagePopup()"><img class="profile-img" src="../images/Scar.jpeg" alt=""></button>
                 </div>
                 <div class="info">
                     <h2 id="title">Profile informations</h2>
@@ -109,6 +109,19 @@
                         <h2>Are you sure you want to delete your account ?</h2>
                     </div>
                     <button class="red-button" type="submit">Yes, I want to DELETE my account</button>
+                </div>
+            </div>
+
+            <div class="popup" id="image-popup">
+                <div class="popup-content">
+                    <div class="header">
+                        <h1>Change Image</h1>
+                        <button class="close-button" onclick="CloseImagePopup()">X</button>
+                    </div>
+                    <div class="form-popup">
+                        <input type="file" accept="image/*"/>
+                    </div>
+                    <button class="black-button" type="submit">Save</button>
                 </div>
             </div>
         
