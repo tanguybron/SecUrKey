@@ -1,19 +1,7 @@
-version: '3'
+version: '2'
 services:
-  web-app:
-    build: ./
-    depends_on:
-      - db
-    volumes:
-      - ./web:/var/www/html
-    ports:
-      - "8080:80"
-    networks:
-      - app_net
   db:
     image: mysql
-    ports: 
-        - "3333:3333"
     environment:
         MYSQL_DATABASE: MdPManager
         MYSQL_USER: user
@@ -23,18 +11,17 @@ services:
         - ./bdd:/docker-entrypoint-initdb.d
     networks:
         - app_net
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    links: 
-        - db:db
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
     ports:
-        - 8000:80
-    environment:
-        MYSQL_USER: user
-        MYSQL_PASSWORD: azerty
-        MYSQL_ROOT_PASSWORD: azerty
+      - "8000:8000"
+    depends_on:
+      - db
     networks:
       - app_net
 
-networks:
+networks :
   app_net:

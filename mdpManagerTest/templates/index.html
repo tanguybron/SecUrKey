@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,18 +8,18 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
     </style>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components.css' %}">
     <title>SecUrKey</title>
 </head>
 <body>
     <div class="navbar">
         <h1 class="logo">SecUrKey</h1>
         <div class="boutons">
-            <a href="join.html" class="link">
+            <a href="{% url 'join' %}" class="link">
                 <div class="filled-button">Join</div>
-            </a>
-            <a href="signin.html" class="link">
+            </a>    
+            <a href="{% url 'signin' %}" class="link">
                 <div class="filled-button">Sign In</div>
             </a>
         </div>
@@ -26,7 +27,7 @@
     <div class="main">
         <div class="text">
             <p>Never again forget your  <br> passwords with KeyVault</p>
-            <a href="join.html" class="link">
+            <a href="{% url 'join' %}" class="link">
                 <div class="border-button">Get Started</div>
             </a>
         </div>

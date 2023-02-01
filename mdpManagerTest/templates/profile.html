@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,15 +9,15 @@
             @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         </style>
         <title>Passwords</title>
-        <link rel="stylesheet" href="../css/dashboard.css">
-        <link rel="stylesheet" href="../css/profile.css">
-        <link rel="stylesheet" href="../css/components.css">
+        <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+        <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+        <link rel="stylesheet" href="{% static 'css/components.css' %} ">
     </head>
     <body>
         <div class="menu">
             <h1 class="logo">SecUrKey</h1>
             <div class="boutons">  
-                <a href="passwords.html">Passwords</a>
+                <a href="{% url 'passwords' %}">Passwords</a>
                 <a href="" class="active">Profile</a>
             </div>
         </div>
@@ -25,7 +26,7 @@
 
             <div class="box">
                 <div>
-                    <button class="image-button" onclick="ImagePopup()"><img class="profile-img" src="../images/Scar.jpeg" alt=""></button>
+                    <button class="image-button" onclick="ImagePopup()"><img class="profile-img" src="{% static 'images/Scar.jpeg' %}" alt=""></button>
                 </div>
                 <div class="info">
                     <h2 id="title">Profile informations</h2>
@@ -126,6 +127,6 @@
             </div>
         
         </div>
-        <script src="../scripts/popup.js"></script>
+        <script src="{% static 'scripts/popup.js' %}"></script>
     </body>
 </html>
