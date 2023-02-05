@@ -1,6 +1,8 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from . import sql_queries
+from django.urls import reverse
+from django.contrib.auth.models import User
 
 def home(request):
     #return HttpResponse("c'est bon")
@@ -25,3 +27,11 @@ def passwords(request):
 
 def profile(request):
     return render(request,"profile.html")
+
+def db(request):
+    return render(request,"show_db.html")
+
+def submit_join(request):
+    user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password'])
+    user.save()
+    return HttpResponseRedirect(reverse('db'))
