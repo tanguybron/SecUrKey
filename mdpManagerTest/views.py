@@ -8,6 +8,7 @@ def home(request):
 
 def join(request):
     #sql_queries.print_users()
+    
     return render(request,"join.html")
 
 def signin(request):
