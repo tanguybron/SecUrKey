@@ -1,7 +1,7 @@
 version: '2'
 services:
   db:
-    image: mariadb
+    build: bdd/.
     environment:
         MYSQL_DATABASE: MdPManager
         MYSQL_USER: user
