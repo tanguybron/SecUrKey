@@ -3,6 +3,7 @@ from django.shortcuts import render
 from . import sql_queries
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 
 def home(request):
     #return HttpResponse("c'est bon")
@@ -28,10 +29,18 @@ def passwords(request):
 def profile(request):
     return render(request,"profile.html")
 
-def db(request):
-    return render(request,"show_db.html")
-
 def submit_join(request):
     user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password'])
     user.save()
-    return HttpResponseRedirect(reverse('db'))
+    return HttpResponseRedirect(reverse('passwords'))
+
+def submit_signin(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return HttpResponseRedirect(reverse('passwords'))
+    else:
+        # Return an 'invalid login' error message.
+        ...
