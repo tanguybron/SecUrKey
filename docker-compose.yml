@@ -19,13 +19,24 @@ services:
       - |
         sleep 10
         python3 manage.py migrate
-        python3 manage.py runserver 0.0.0.0:8000
+        gunicorn --bind 0.0.0.0:8000 mdpManagerTest.wsgi
+        # python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    expose:
+      - "8000"
+    depends_on:
+      - db
+    networks:
+      - app_net
+  nginx:
+    build: ./nginx
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - "3333:80"
     depends_on:
-      - db
+      - web
     networks:
       - app_net
 
