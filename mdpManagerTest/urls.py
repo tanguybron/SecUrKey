@@ -28,5 +28,5 @@ urlpatterns = [
     path('passwords/', views.passwords, name="passwords" ),
     path('profile/', views.profile, name="profile" ),
     path('join/submit_join/', views.submit_join, name='submit_join'),
-    path('db/', views.db, name="db" ),
+    path('signin/submit_signin/', views.submit_signin, name='submit_signin'),
 ]
