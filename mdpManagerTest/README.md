@@ -1,13 +1,5 @@
 ToDo :
-- Join
-    - Create a user if not exist
-    - Error message if exist
-- SignIn
-    - Sign In if account exist and infos correct
-    - Error message if account does not exist or infos incorrect
-- Permission
-    - View Pages only if connected
-    - Redirection to SignIn if not connected
+- Complete Templates
 - Gestion des Cookies
 - Add Account 
 - Research Bar
