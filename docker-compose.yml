@@ -33,12 +33,13 @@ services:
     volumes:
       - .:/code
     ports:
-      - "80:80"
+      # - "80:80"
       - "443:443"
     depends_on:
       - web
     networks:
       - app_net
+    restart: always
 
 networks :
   app_net:
