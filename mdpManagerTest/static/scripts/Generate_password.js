@@ -1,5 +1,3 @@
-
-
 function generate_password(letter,digits,punctuation,lengthPassword) 
 {
     var listchar="";
