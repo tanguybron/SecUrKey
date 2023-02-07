@@ -29,4 +29,5 @@ urlpatterns = [
     path('profile/', views.profile, name="profile" ),
     path('join/submit_join/', views.submit_join, name='submit_join'),
     path('signin/submit_signin/', views.submit_signin, name='submit_signin'),
+    path('profile/edit_username/', views.edit_username, name='edit_username'),
 ]
