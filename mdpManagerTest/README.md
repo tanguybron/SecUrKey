@@ -8,6 +8,7 @@ ToDo :
 - Permission
     - View Pages only if connected
     - Redirection to SignIn if not connected
+- Gestion des Cookies
 - Add Account 
 - Research Bar
 
