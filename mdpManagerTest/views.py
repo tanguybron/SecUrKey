@@ -67,3 +67,41 @@ def edit_username(request):
         user.username = username
         user.save()
         return HttpResponseRedirect(reverse('profile'))
+    
+@login_required
+def edit_email(request):
+    new_email = request.POST["new_email"]
+    verif_new_email = request.POST["verif_new_email"]
+    if(new_email==verif_new_email):
+        check_email_db = User.objects.filter(email=request.POST['new_email']).exists()
+        if check_email_db :
+            # Print error
+            messages.error(request,"Username or Email already exist")
+            return HttpResponseRedirect(reverse('profile'))
+        else :
+            user = request.user
+            user.email = new_email
+            user.save()
+            return HttpResponseRedirect(reverse('profile'))
+    else :
+        # Print error
+        ...
+
+@login_required
+def edit_password(request):
+    current_password = request.POST["current_password"]
+    new_password = request.POST["new_password"]
+    verif_new_password = request.POST["verif_new_password"]
+    user = request.user
+    verif_password = authenticate(username=user.username,password=current_password)
+    if verif_password is not None :
+        if(new_password==verif_new_password) :
+            user.set_password(new_password)
+            user.save()
+            return HttpResponseRedirect(reverse('profile'))
+        else :
+            # Print error
+            ...
+    else :
+        # Print error
+        ...
