@@ -92,9 +92,9 @@ def edit_password(request):
     current_password = request.POST["current_password"]
     new_password = request.POST["new_password"]
     verif_new_password = request.POST["verif_new_password"]
-    user = request.user
-    verif_password = authenticate(username=user.username,password=current_password)
-    if verif_password is not None :
+    username = request.user.username
+    user = authenticate(username=username,password=current_password)
+    if user is not None :
         if(new_password==verif_new_password) :
             user.set_password(new_password)
             user.save()
