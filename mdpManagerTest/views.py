@@ -47,5 +47,5 @@ def submit_signin(request):
         login(request, user)
         return HttpResponseRedirect(reverse('passwords'))
     else:
-        # Return an 'invalid login' error message.
-        ...
+        messages.error(request,"Username or Password is incorrect")
+        return HttpResponseRedirect(reverse('signin'))
