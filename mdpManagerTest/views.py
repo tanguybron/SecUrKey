@@ -4,6 +4,7 @@ from . import sql_queries
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 def home(request):
@@ -17,15 +18,19 @@ def join(request):
 def signin(request):
     return render(request,"signin.html")
 
+@login_required
 def add_account(request):
     return render(request,"add_account.html")
 
+@login_required
 def password(request):
     return render(request,"password.html")
 
+@login_required
 def passwords(request):
     return render(request,"passwords.html")
 
+@login_required
 def profile(request):
     return render(request,"profile.html")
 
@@ -49,3 +54,16 @@ def submit_signin(request):
     else:
         messages.error(request,"Username or Password is incorrect")
         return HttpResponseRedirect(reverse('signin'))
+
+@login_required
+def edit_username(request):
+    username = request.POST["username"]
+    check_user_db = User.objects.filter(username=request.POST['username']).exists()
+    if check_user_db :
+        messages.error(request,"Username or Email already exist")
+        return HttpResponseRedirect(reverse('profile'))
+    else :
+        user = request.user
+        user.username = username
+        user.save()
+        return HttpResponseRedirect(reverse('profile'))
