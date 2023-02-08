@@ -60,7 +60,8 @@
             </div>
 
             <div class="popup" id="password-popup">
-                <form class="popup-content">
+                <form class="popup-content" action="{% url 'edit_username' %}" method="post">
+                    {% csrf_token %}
                     <div class="header">
                         <h1>Edit Password</h1>
                         <button class="close-button" onclick="ClosePasswordPopup()">X</button>
@@ -75,7 +76,8 @@
             </div>
 
             <div class="popup" id="email-popup">
-                <form class="popup-content">
+                <form class="popup-content" action="{% url 'edit_username' %}" method="post">
+                    {% csrf_token %}
                     <div class="header">
                         <h1>Edit Email</h1>
                         <button class="close-button" onclick="CloseEmailPopup()">X</button>
