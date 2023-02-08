@@ -30,4 +30,6 @@ urlpatterns = [
     path('join/submit_join/', views.submit_join, name='submit_join'),
     path('signin/submit_signin/', views.submit_signin, name='submit_signin'),
     path('profile/edit_username/', views.edit_username, name='edit_username'),
+    path('profile/edit_email/', views.edit_email, name='edit_email'),
+    path('profile/edit_password/', views.edit_password, name='edit_password'),
 ]

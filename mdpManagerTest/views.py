@@ -60,7 +60,7 @@ def edit_username(request):
     username = request.POST["username"]
     check_user_db = User.objects.filter(username=request.POST['username']).exists()
     if check_user_db :
-        messages.error(request,"Username or Email already exists")
+        messages.error(request,"Username already exists")
         return HttpResponseRedirect(reverse('profile'))
     else :
         user = request.user
@@ -75,8 +75,7 @@ def edit_email(request):
     if(new_email==verif_new_email):
         check_email_db = User.objects.filter(email=request.POST['new_email']).exists()
         if check_email_db :
-            # Print error
-            messages.error(request,"Username or Email already exists")
+            messages.error(request,"Email already exists")
             return HttpResponseRedirect(reverse('profile'))
         else :
             user = request.user
@@ -84,8 +83,8 @@ def edit_email(request):
             user.save()
             return HttpResponseRedirect(reverse('profile'))
     else :
-        # Print error
-        ...
+        messages.error(request,"Verify email is incorrect")
+        return HttpResponseRedirect(reverse('profile'))
 
 @login_required
 def edit_password(request):
@@ -98,10 +97,12 @@ def edit_password(request):
         if(new_password==verif_new_password) :
             user.set_password(new_password)
             user.save()
+            user = authenticate(username=username,password=new_password)
+            login(request, user)
             return HttpResponseRedirect(reverse('profile'))
         else :
-            # Print error
-            ...
+            messages.error(request,"Verify password is incorrect")
+        return HttpResponseRedirect(reverse('profile'))
     else :
-        # Print error
-        ...
+        messages.error(request,"Password incorrect")
+        return HttpResponseRedirect(reverse('profile'))
