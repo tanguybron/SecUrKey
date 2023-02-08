@@ -35,13 +35,18 @@ def profile(request):
     return render(request,"profile.html")
 
 def submit_join(request):
-    check_user_db = User.objects.filter(username=request.POST['username']).exists() or User.objects.filter(email=request.POST['email']).exists()
+    username = request.POST['username']
+    email = request.POST['email']
+    password = request.POST['password']
+    check_user_db = User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()
     if check_user_db :
         messages.error(request,"Username or Email already exist")
         return HttpResponseRedirect(reverse('join'))
     else :
-        user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password'])
+        user = User.objects.create_user(username, email, password)
         user.save()
+        user = authenticate(request, username=username, password=password)
+        login(request, user)
         return HttpResponseRedirect(reverse('passwords'))
 
 def submit_signin(request):
@@ -106,3 +111,9 @@ def edit_password(request):
     else :
         messages.error(request,"Password incorrect")
         return HttpResponseRedirect(reverse('profile'))
+    
+@login_required
+def delete_account(request):
+    user = request.user
+    user.delete()
+    return HttpResponseRedirect(reverse('home'))
