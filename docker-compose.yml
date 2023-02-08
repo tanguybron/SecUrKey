@@ -1,7 +1,7 @@
 version: '2'
 services:
   db:
-    build: bdd/.
+    build: BDD/.
     environment:
         MYSQL_DATABASE: MdPManager
         MYSQL_USER: user
