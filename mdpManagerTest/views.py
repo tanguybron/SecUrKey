@@ -3,7 +3,7 @@ from django.shortcuts import render
 from . import sql_queries
 from django.urls import reverse
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -116,4 +116,9 @@ def edit_password(request):
 def delete_account(request):
     user = request.user
     user.delete()
+    return HttpResponseRedirect(reverse('home'))
+
+@login_required
+def logout_user(request):
+    logout(request)
     return HttpResponseRedirect(reverse('home'))

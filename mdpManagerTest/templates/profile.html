@@ -15,13 +15,7 @@
         <link rel="stylesheet" href="{% static 'css/components.css' %} ">
     </head>
     <body>
-        <div class="menu">
-            <h1 class="logo">SecUrKey</h1>
-            <div class="boutons">  
-                <a href="{% url 'passwords' %}">Passwords</a>
-                <a href="" class="active">Profile</a>
-            </div>
-        </div>
+        {% include "menu.html" %}
 
         <div class="page">
 
