@@ -1,4 +1,4 @@
-mdpManagerTest/__pycache__/
+__pycache__/
 accounts/__pycache__/
 securkey.crt
 securkey.key
