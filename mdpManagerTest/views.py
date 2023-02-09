@@ -24,13 +24,18 @@ def add_account(request):
     return render(request,"add_account.html")
 
 @login_required
-def password(request):
-    return render(request,"password.html")
+def password(request,account_id):
+    try :
+        account = Account.objects.get(pk=account_id)
+        context = {'account':account}
+        return render(request,"password.html",context)
+    except :
+        return HttpResponseRedirect(reverse('passwords'))
 
 @login_required
 def passwords(request):
     try :
-        accounts = Account.objects.get(pk=request.user.id)
+        accounts = Account.objects.filter(user=request.user)
     except :
         accounts = None
     context = {'accounts':accounts}
@@ -128,3 +133,12 @@ def delete_account(request):
 def logout_user(request):
     logout(request)
     return HttpResponseRedirect(reverse('home'))
+
+@login_required
+def submit_account(request):
+    website = request.POST['website']
+    email = request.POST['email']
+    password = request.POST['password']
+    account = Account(user=request.user,title=website,username=email,password=password,website=website,creation="0",last_modification="0")
+    account.save()
+    return HttpResponseRedirect(reverse('passwords'))
