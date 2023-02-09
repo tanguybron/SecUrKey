@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from accounts.models import *
 
 def home(request):
     #return HttpResponse("c'est bon")
@@ -28,7 +29,12 @@ def password(request):
 
 @login_required
 def passwords(request):
-    return render(request,"passwords.html")
+    try :
+        accounts = Account.objects.get(pk=request.user.id)
+    except :
+        accounts = None
+    context = {'accounts':accounts}
+    return render(request,"passwords.html",context)
 
 @login_required
 def profile(request):
