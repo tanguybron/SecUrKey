@@ -2,4 +2,4 @@ __pycache__/
 accounts/__pycache__/
 securkey.crt
 securkey.key
-/accounts/__pycache__
+/accounts/__pycache__/

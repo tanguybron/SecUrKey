@@ -1,28 +1,24 @@
 version: '2'
 services:
   db:
-    build: BDD/.
+    image: mysql
     environment:
         MYSQL_DATABASE: MdPManager
         MYSQL_USER: user
         MYSQL_PASSWORD: azerty
         MYSQL_ROOT_PASSWORD: azerty
-    volumes:
-        - ./bdd:/docker-entrypoint-initdb.d
     networks:
         - app_net
   web:
-    build: .
+    image: tanguybron/securkey:web
     command:
       - /bin/bash
       - -c
       - |
-        sleep 5
+        sleep 10
         python3 manage.py makemigrations
         python3 manage.py migrate
         gunicorn --bind 0.0.0.0:8000 mdpManagerTest.wsgi
-    volumes:
-      - .:/code
     expose:
       - "8000"
     depends_on:
@@ -30,11 +26,10 @@ services:
     networks:
       - app_net
   nginx:
-    build: ./nginx
+    image: tanguybron/securkey:nginx
     volumes:
       - .:/code
     ports:
-      # - "80:80"
       - "443:443"
     depends_on:
       - web
