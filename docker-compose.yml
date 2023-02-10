@@ -10,7 +10,8 @@ services:
     networks:
         - app_net
   web:
-    image: tanguybron/securkey:web
+    build: .
+    #image: tanguybron/securkey:web
     command:
       - /bin/bash
       - -c
@@ -26,7 +27,8 @@ services:
     networks:
       - app_net
   nginx:
-    image: tanguybron/securkey:nginx
+    build: ./nginx
+    #image: tanguybron/securkey:nginx
     volumes:
       - .:/code
     ports:
