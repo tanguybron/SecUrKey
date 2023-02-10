@@ -142,3 +142,27 @@ def submit_account(request):
     account = Account(user=request.user,title=website,username=email,password=password,website=website,creation="0",last_modification="0")
     account.save()
     return HttpResponseRedirect(reverse('passwords'))
+
+@login_required
+def account_username(request,account_id):
+    username = request.POST['username']
+    account = Account.objects.get(pk=account_id)
+    account.username = username
+    account.save()
+    return HttpResponseRedirect(reverse('password',args=[account_id]))
+
+@login_required
+def account_password(request,account_id):
+    password = request.POST['password']
+    account = Account.objects.get(pk=account_id)
+    account.password = password
+    account.save()
+    return HttpResponseRedirect(reverse('password',args=[account_id]))
+
+@login_required
+def account_website(request,account_id):
+    website = request.POST['website']
+    account = Account.objects.get(pk=account_id)
+    account.website = website
+    account.save()
+    return HttpResponseRedirect(reverse('password',args=[account_id]))
