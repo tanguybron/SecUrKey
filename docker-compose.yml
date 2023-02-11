@@ -2,11 +2,8 @@ version: '2'
 services:
   db:
     image: mysql
-    environment:
-        MYSQL_DATABASE: MdPManager
-        MYSQL_USER: user
-        MYSQL_PASSWORD: azerty
-        MYSQL_ROOT_PASSWORD: azerty
+    env_file:
+      - database.env
     networks:
         - app_net
   web:

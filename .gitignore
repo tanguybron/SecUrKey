@@ -7,3 +7,4 @@ securkey.key
 /accounts/__pycache__
 /accounts/migrations/__pycache__
 >>>>>>> 92d2656591a77d8eee844b8c4ad1b439b2c8ee4a
+/database.env
