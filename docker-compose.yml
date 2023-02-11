@@ -3,14 +3,14 @@ services:
   db:
     image: mysql
     env_file:
-      - database.env
+      - environnements/database.env
     networks:
         - app_net
   web:
     build: .
     #image: tanguybron/securkey:web
     env_file:
-      - django.env
+      - environnements/django.env
     command:
       - /bin/bash
       - -c
