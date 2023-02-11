@@ -9,6 +9,8 @@ services:
   web:
     build: .
     #image: tanguybron/securkey:web
+    env_file:
+      - django.env
     command:
       - /bin/bash
       - -c
