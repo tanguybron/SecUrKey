@@ -3,4 +3,4 @@ securkey.crt
 securkey.key
 /accounts/__pycache__/
 /accounts/migrations/__pycache__
-/environnements
+/environements
