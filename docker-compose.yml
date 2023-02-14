@@ -27,7 +27,9 @@ services:
     networks:
       - app_net
   nginx:
-    build: ./nginx
+    build: 
+      context: .
+      dockerfile: ./nginx/Dockerfile
     #image: tanguybron/securkey:nginx
     volumes:
       - .:/code
