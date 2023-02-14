@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "Securkey extension",
+    "description": "Password Manager",
+    "version": "1",
+    "icons": {
+        "128": "128.png"
+    },
+    "action": {
+        "default_popup": "ext.html",
+        "default_icon":{
+            "128":"128.png"
+        }
+    }
+}
