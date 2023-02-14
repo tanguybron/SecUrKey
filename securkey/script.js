@@ -1,0 +1,1 @@
+var urlcourante = document.location.href;
