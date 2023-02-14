@@ -20,6 +20,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
+DB_NAME = os.getenv('MYSQL_DATABASE')
+DB_USER = os.getenv('MYSQL_USER')
+DB_PASSWORD = os.getenv('MYSQL_PASSWORD')
+DB_ROOT_PASSWORD = os.getenv('MYSQL_ROOT_PASSWORD')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,9 +81,9 @@ WSGI_APPLICATION = 'mdpManagerTest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'MdPManager',
-        'USER': 'root',
-        'PASSWORD': 'azerty',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_ROOT_PASSWORD,
         'HOST': 'db',
         'PORT': '3306',
     }

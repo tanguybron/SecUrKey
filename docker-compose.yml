@@ -11,6 +11,7 @@ services:
     #image: tanguybron/securkey:web
     env_file:
       - environnements/django.env
+      - environnements/database.env
     command:
       - /bin/bash
       - -c
