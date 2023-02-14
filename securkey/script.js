@@ -1,1 +1,3 @@
-var urlcourante = document.location.href;
+function coucou(){
+    console.log("ok");
+}
