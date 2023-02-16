@@ -15,7 +15,7 @@ echo
 
 # recuperation des fichiers du projet
 echo -n "Recuperation des fichiers du projet...  "
-git clone --quiet https://github.com/tanguybron/GestionnaireMdP
+git clone --quiet https://github.com/tanguybron/SecUrKey
 cd GestionnaireMdP
 echo -n "  OK"
 echo
