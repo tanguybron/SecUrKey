@@ -6,6 +6,7 @@ services:
       - environnements/database.env
     networks:
         - app_net
+    restart: always
   web:
     build: .
     #image: tanguybron/securkey:web

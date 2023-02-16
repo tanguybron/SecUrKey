@@ -23,7 +23,6 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DB_NAME = os.getenv('MYSQL_DATABASE')
 DB_USER = os.getenv('MYSQL_USER')
 DB_PASSWORD = os.getenv('MYSQL_PASSWORD')
-DB_ROOT_PASSWORD = os.getenv('MYSQL_ROOT_PASSWORD')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -83,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': DB_NAME,
         'USER': DB_USER,
-        'PASSWORD': DB_ROOT_PASSWORD,
+        'PASSWORD': DB_PASSWORD,
         'HOST': 'db',
         'PORT': '3306',
     }
