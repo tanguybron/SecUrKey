@@ -50,3 +50,16 @@ body {
     width: 75vw;
     height: 100%;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #ffffff;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(171.32deg, #0E50E3 0%, #143268 100%);
+  }
