@@ -10,5 +10,5 @@ function Search() {
         else {
             x[i].style.display="flex";                 
         }
-    }
+    } 
 }
