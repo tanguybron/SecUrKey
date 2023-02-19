@@ -166,7 +166,20 @@ input:active, input:focus {
     padding-bottom: 20px;
 }
 
-.page {
-    overflow: auto;
-}
 
+.btn {
+    background-color: #0E50E3; 
+    border: none; 
+    color: white; 
+    padding: 12px 16px; 
+    font-size: 16px; 
+    transition: background-color 0.2s ease-in-out;
+    margin-left: auto;
+  }
+
+  .btn:hover {
+    background-color: white;
+    color: #0E50E3;
+    transition: background-color 0.2s ease-in-out;
+  }
+  

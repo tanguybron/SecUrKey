@@ -1,11 +1,12 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from accounts.models import *
+
 
 def home(request):
     #return HttpResponse("c'est bon")
@@ -141,6 +142,16 @@ def submit_account(request):
     account = Account(user=request.user,title=website,username=email,password=password,website=website,creation="0",last_modification="0")
     account.save()
     return HttpResponseRedirect(reverse('passwords'))
+
+
+@login_required
+def delete_accounts(request, account_id):
+    account = get_object_or_404(Account, pk=account_id)
+    if request.method == "POST":
+        account.delete()
+        return redirect("passwords")
+    return render(request, "passwords.html")
+
 
 @login_required
 def account_username(request,account_id):

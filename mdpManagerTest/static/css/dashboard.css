@@ -49,6 +49,7 @@ body {
 .page {
     width: 75vw;
     height: 100%;
+    overflow: auto;
 }
 
 ::-webkit-scrollbar {

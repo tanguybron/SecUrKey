@@ -38,4 +38,6 @@ urlpatterns = [
     path('profile/delete_account/', views.delete_account, name='delete_account'),
     path('logout_user/', views.logout_user, name='logout_user'),
     path('add_account/submit_account', views.submit_account, name='submit_account'),
+    path('passwords/delete_accounts/<int:account_id>/', views.delete_accounts, name='delete_accounts'),
+
 ]
