@@ -31,7 +31,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['localhost','securkey.local']
 
 CORS_ALLOWED_ORIGINS = [
-    "chrome-extension://deoinbpfjfgcmbigifciangbcfjhmmlm",
+    "chrome-extension://keeemmciakkaopfkllbpnjhjfhlnebnp",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
