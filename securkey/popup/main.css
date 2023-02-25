@@ -1,0 +1,77 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 75%;
+    width: 60%;
+    background: linear-gradient(171.32deg, #0E50E3 0%, #143268 100%);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    overflow: hidden;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo {
+    font-size: 40px;
+}
+
+.boutons {
+    display: flex;
+}
+
+.link {
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.text{
+    position: absolute;
+    top: 50vh;
+    margin-inline: 50px;
+    transform: translateY(-50%);
+}
+
+.text p{
+    font-size: 50px;
+}
+
+.text .link{
+    padding: 50px;
+}
+
+.text .border-button{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#vault {
+    width: 80vw;
+    height: 40vw;
+    position: absolute;
+    top: 15%;
+    left: 40%;
+    background-image: url("../images/vault.png");
+    background-size: contain;
+}
+
+#key {
+    width: 50vw;
+    height: 25vw;
+    position: absolute;
+    top: 45%;
+    left: 35%;
+    background-image: url("../images/key.png");
+    background-size: contain;
+}
