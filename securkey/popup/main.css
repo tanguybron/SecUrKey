@@ -3,6 +3,15 @@
     margin: 0;
 }
 
+h1{
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    margin-top: 5%;
+}
+
 body {
     height: 75%;
     width: 60%;
@@ -74,4 +83,20 @@ body {
     left: 35%;
     background-image: url("../images/key.png");
     background-size: contain;
+}
+
+button{
+    margin-top: 5%;
+    background: #0E50E3;
+    border: white 2px solid;
+    height: 30px;
+    width: 150px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: white;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
 }
