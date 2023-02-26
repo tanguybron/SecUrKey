@@ -100,3 +100,11 @@ button{
     cursor: pointer;
     position: relative;
 }
+
+.no_input{
+    font-size: 13px;
+    width: 200px;
+    color: red;
+    font-weight: 700;
+    margin-top: 5%;
+}
