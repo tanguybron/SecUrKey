@@ -1,13 +1,16 @@
-document.getElementById("button_username").addEventListener('click' , function() {
-    navigator.clipboard.writeText(document.getElementById("username").innerHTML.split(" : ")[1]);
-    document.getElementById("button_username").innerHTML = "copied";
-});
+try{
+    document.getElementById("button_username").addEventListener('click' , function() {
+        navigator.clipboard.writeText(document.getElementById("username").innerHTML.split(" : ")[1]);
+        document.getElementById("button_username").innerHTML = "copied";
+    });
 
-document.getElementById("button_password").addEventListener('click' , function() {
-    navigator.clipboard.writeText(document.getElementById("password").innerHTML.split(" : ")[1]);
-    document.getElementById("button_password").innerHTML = "copied";
-});
-
+    document.getElementById("button_password").addEventListener('click' , function() {
+        navigator.clipboard.writeText(document.getElementById("password").innerHTML.split(" : ")[1]);
+        document.getElementById("button_password").innerHTML = "copied";
+    });
+}catch(err){ // si dans page not_found.html 
+    console.log(err);
+}
 
 chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     var activeTab = tabs[0];
@@ -20,10 +23,8 @@ const url='https://localhost/passwords_json';
 xhr.open("GET", url);
 xhr.send();
 xhr.onreadystatechange = (e) => {
-    // window.location.href = "./index.html";
     data = xhr.responseText;
     var json;
-    console.log(data);
     json = JSON.parse(data);
 
     for(var i = 0; i < json.length; i++) {
