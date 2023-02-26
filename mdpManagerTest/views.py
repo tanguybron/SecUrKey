@@ -182,4 +182,4 @@ def account_website(request,account_id):
 def passwords_json(request):
     accounts = Account.objects.filter(user=request.user)
     data = serializers.serialize('json', accounts)
-    return JsonResponse(data, content_type='application/json')
+    return HttpResponse(data, content_type='application/json')
