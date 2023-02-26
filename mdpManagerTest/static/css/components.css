@@ -8,20 +8,6 @@
     background-color: white;
 }
 
-.border-button {
-    text-align: center;
-    padding: 7.5px;
-    border: 3px solid white;
-    border-radius: 100px;
-    width: 10vw;
-    color: white;
-    background-color: rgba(0, 0, 0, 0);
-    margin: 50px;
-    font-size: 17px;
-    font-family: "Inter",sans-serif;
-    font-weight: 700;
-}
-
 .form {
     display: flex;
     flex-direction: column;
@@ -43,16 +29,6 @@ input:active, input:focus {
     outline: none;
 }
 
-.cross-button {
-    text-decoration: none;
-    border: none;
-    background:rgba(0, 0, 0, 0);
-    color: white;
-    font-family: "Inter",sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    display: block;
-}
 
 .save-button {
     text-align: center;
@@ -166,20 +142,146 @@ input:active, input:focus {
     padding-bottom: 20px;
 }
 
-
-.btn {
-    background-color: #0E50E3; 
-    border: none; 
-    color: white; 
-    padding: 12px 16px; 
-    font-size: 16px; 
-    transition: background-color 0.2s ease-in-out;
-    margin-left: auto;
+  .key-button {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: white;
+    border: 3px solid #0E50E3;
+    border-radius: 20px;
+    color: #0E50E3;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: transform 0.5s, top 0.5s;
+    position: relative;
+    overflow: hidden;
   }
 
-  .btn:hover {
-    background-color: white;
-    color: #0E50E3;
-    transition: background-color 0.2s ease-in-out;
+  .key-button:hover .fa-key {
+    animation: shake 0.5s;
+    animation-iteration-count: 1;
+    transform: scale(1.1);
   }
   
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(5px); }
+    50% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+  }
+
+  .key-button.clicked {
+    transform: translateY(10px);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .return-back {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: white;
+    border: 5px solid #0E50E3;
+    border-radius: 20px;
+    color: #0E50E3;
+    /*float: right;*/
+  }
+  
+  .return-back:hover {
+    color: #FFF; 
+    background-color: #0E50E3; 
+  }
+  
+
+  .border-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: white;
+    border: 4px solid #ffffff;
+    border-radius: 20px;
+    color: #0E50E3;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    /*transition: all 0.5s ease-in-out;*/
+    position: relative;
+    overflow: hidden;
+    margin-top: 40px;
+  }
+  
+  .border-button:hover {
+    background-color: #0E50E3;
+    color: #ffffff;
+  }
+
+  .box {
+    position: relative;
+  }
+  
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .header h1 {
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.2; 
+    padding-top: 20px; 
+    padding-left: 45px;
+  }
+
+  .category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+
+  .dice-button {
+    background-color: #0E50E3;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .dice-button:hover {
+    background-color: #fff;
+    color: #0E50E3;
+  }
+  
+  .dice-button:hover i {
+    animation: roll 0.5s linear;
+  }
+  
+  @keyframes roll {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(180deg);
+    }
+    50% {
+      transform: rotate(360deg);
+    }
+    75% {
+      transform: rotate(540deg);
+    }
+    100% {
+      transform: rotate(720deg);
+    }
+  }
+  
+  .roll i {
+    animation: roll 0.5s linear infinite;
+  }  

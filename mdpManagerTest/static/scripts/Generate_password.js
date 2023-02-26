@@ -1,4 +1,4 @@
-function generate_password(letter,digits,punctuation,lengthPassword) 
+function Generate_password(letter,digits,punctuation,lengthPassword) 
 {
     var listchar="";
     var password="";
