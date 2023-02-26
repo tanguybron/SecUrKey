@@ -26,17 +26,20 @@ xhr.onreadystatechange = (e) => {
     data = xhr.responseText;
     var json;
     json = JSON.parse(data);
-
     for(var i = 0; i < json.length; i++) {
         if(json[i].fields.website == active_domain){
             document.getElementById("username").innerHTML = "username : " + json[i].fields.username;
             document.getElementById("password").innerHTML = "password : " + json[i].fields.password;
         }
     }
-
-    username_found = document.getElementById("username").innerHTML.split(" : ")[1];
-    if(username_found == undefined){
-        window.location.href = "./not_found.html";
+    try{
+        username_found = document.getElementById("username").innerHTML.split(" : ")[1];
+        if(username_found == undefined){
+            window.location.href = "./not_found.html";
+        }
+    }catch(err){
+        console.log(err);
     }
+    
 }
 
