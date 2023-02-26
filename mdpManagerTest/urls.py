@@ -39,5 +39,6 @@ urlpatterns = [
     path('logout_user/', views.logout_user, name='logout_user'),
     path('add_account/submit_account', views.submit_account, name='submit_account'),
     path('passwords/delete_accounts/<int:account_id>/', views.delete_accounts, name='delete_accounts'),
+    path('passwords_json', views.passwords_json, name='passwords_json'),
 
 ]

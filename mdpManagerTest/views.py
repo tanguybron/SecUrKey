@@ -1,4 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
+from django.core import serializers
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -176,3 +177,9 @@ def account_website(request,account_id):
     account.website = website
     account.save()
     return HttpResponseRedirect(reverse('password',args=[account_id]))
+
+@login_required
+def passwords_json(request):
+    accounts = Account.objects.filter(user=request.user)
+    data = serializers.serialize('json', accounts)
+    return HttpResponse(data, content_type='application/json')
