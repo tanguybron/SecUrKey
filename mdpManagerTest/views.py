@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core import serializers
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
@@ -182,4 +182,4 @@ def account_website(request,account_id):
 def passwords_json(request):
     accounts = Account.objects.filter(user=request.user)
     data = serializers.serialize('json', accounts)
-    return HttpResponse(data, content_type='application/json')
+    return JsonResponse(data, content_type='application/json')

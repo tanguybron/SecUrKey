@@ -12,7 +12,6 @@ document.getElementById("button_password").addEventListener('click' , function()
 chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     var activeTab = tabs[0];
     active_domain = activeTab.url.replace("https://", "").replace("http://", "").replace("www.", "").replace("/", "");
-    // document.getElementById("url").innerHTML = "url : " + active_domain;
 });
 
 // get source code of the page https://localhost
@@ -21,12 +20,22 @@ const url='https://localhost/passwords_json';
 xhr.open("GET", url);
 xhr.send();
 xhr.onreadystatechange = (e) => {
+    // window.location.href = "./index.html";
     data = xhr.responseText;
-    var json = JSON.parse(data);
+    var json;
+    console.log(data);
+    json = JSON.parse(data);
+
     for(var i = 0; i < json.length; i++) {
         if(json[i].fields.website == active_domain){
             document.getElementById("username").innerHTML = "username : " + json[i].fields.username;
             document.getElementById("password").innerHTML = "password : " + json[i].fields.password;
         }
     }
+
+    username_found = document.getElementById("username").innerHTML.split(" : ")[1];
+    if(username_found == undefined){
+        window.location.href = "./not_found.html";
+    }
 }
+
