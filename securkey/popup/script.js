@@ -14,7 +14,7 @@ try{
 
 chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     var activeTab = tabs[0];
-    active_domain = activeTab.url.replace("https://", "").replace("http://", "").replace("www.", "").replace("/", "");
+    active_domain = activeTab.url.replace("https://", "").replace("http://", "").replace("www.", "").split("/")[0];
 });
 
 // get source code of the page https://localhost
@@ -34,12 +34,23 @@ xhr.onreadystatechange = (e) => {
     }
     try{
         username_found = document.getElementById("username").innerHTML.split(" : ")[1];
+        //password_found = document.getElementById("password").innerHTML.split(" : ")[1];
         if(username_found == undefined){
             window.location.href = "./not_found.html";
         }
+        // else{
+        //     var x = document.getElementById("username").value;
+        //     if (x == ""){
+        //         document.getElementById("username").value = username_found;
+        //     }
+        
+        //     var y = document.getElementById("password").value;
+        //     if (y == ""){
+        //         document.getElementById("password").value = password_found;
+        //     }      
+        // }
     }catch(err){
         console.log(err);
     }
     
 }
-
