@@ -5,9 +5,9 @@ const xhr = new XMLHttpRequest();
 const url='https://localhost/passwords_json';
 let username_found;
 let password_found;
-xhr.open("GET", 'https://localhost/passwords_json',false);
+xhr.open("GET", 'https://localhost/passwords_json');
 xhr.withCredentials = true;
-xhr.setRequestHeader('Cookie', 'sessionid=zm27edk87mgwnm3qbte1t3o4ebebaiqm');
+// xhr.setRequestHeader('Cookie', 'sessionid=zm27edk87mgwnm3qbte1t3o4ebebaiqm');
 xhr.send();
 xhr.onreadystatechange = (e) => {
     console.log("state changed")
