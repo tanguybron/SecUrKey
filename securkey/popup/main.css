@@ -108,3 +108,14 @@ button{
     font-weight: 700;
     margin-top: 5%;
 }
+
+.top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rond{
+    width: 20px;
+    margin-left: 20%;
+}

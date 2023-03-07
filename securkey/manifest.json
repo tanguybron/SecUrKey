@@ -18,7 +18,7 @@
     },
     "permissions": [
         "activeTab",
-        "https://localhost/passwords_json"
+        "tabs"
     ],
     "content_scripts": [
         {
