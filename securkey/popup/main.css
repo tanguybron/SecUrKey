@@ -4,17 +4,17 @@
 }
 
 h1{
-    font-size: 20px;
+    font-size: 30px;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     color: white;
-    text-align: center;
     margin-top: 5%;
 }
 
 body {
-    height: 75%;
-    width: 60%;
+    padding: 20px;
+    height: 500px;
+    width: 200px;
     background: linear-gradient(171.32deg, #0E50E3 0%, #143268 100%);
     color: white;
     font-family: 'Inter', sans-serif;
@@ -90,7 +90,7 @@ button{
     background: #0E50E3;
     border: white 2px solid;
     height: 30px;
-    width: 150px;
+    width: 100%;
     border-radius: 10px;
     padding: 10px 20px;
     color: white;
