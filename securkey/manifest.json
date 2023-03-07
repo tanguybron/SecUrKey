@@ -16,7 +16,11 @@
     "background": {
         "service_worker": "background.js"
     },
-    "permissions": ["activeTab"],
+    "permissions": [
+        "webRequest",
+        "*",
+        "cookies"
+    ],
     "content_scripts": [
         {
             "js": ["scripts/content.js"],
