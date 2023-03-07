@@ -32,7 +32,6 @@ ALLOWED_HOSTS = ['localhost','securkey.local']
 
 CORS_ALLOWED_ORIGINS = [
     "chrome-extension://keeemmciakkaopfkllbpnjhjfhlnebnp",
-    'https://webaurion2.esiee.fr',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
