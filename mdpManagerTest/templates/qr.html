@@ -17,9 +17,10 @@
     <h1 class="logo">SecUrKey</h1>
     {% qr_from_text uri size="M" %}
     <p>{{ secret }}</p>
-    <form action="{% url '' %}" method="post">
+    <form action="{% url 'TwoFA' %}" method="post">
         {% csrf_token %}
-        <input type="text" placeholder="2FA token">
+        <input type="text" name="token" placeholder="2FA token">
+        <input name="key" value="{{secret}}">
         <button type="submit">Send</button>
     </form>
 </body>

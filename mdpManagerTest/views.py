@@ -25,10 +25,11 @@ def qr(request):
     return render(request,"qr.html",context)
 
 def TwoFA(request):
-    totp = pyotp.TOTP(token)
-    totp.now()
-    totp.verify()
-    return HttpResponseRedirect(reverse('passwords'))
+    totp = pyotp.TOTP(request.POST['key'])
+    if totp.verify(request.POST['token']) :
+        return HttpResponseRedirect(reverse('passwords'))
+    else :
+        return HttpResponseRedirect(reverse('qr'))
 
 def signin(request):
     return render(request,"signin.html")
@@ -72,7 +73,7 @@ def submit_join(request):
         user.save()
         user = authenticate(request, username=username, password=password)
         login(request, user)
-        return HttpResponseRedirect(reverse('passwords'))
+        return HttpResponseRedirect(reverse('qr'))
 
 def submit_signin(request):
     username = request.POST['username']

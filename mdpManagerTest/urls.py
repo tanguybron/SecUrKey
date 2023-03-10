@@ -24,6 +24,7 @@ urlpatterns = [
     path('', views.home, name="home" ),
     path('join/', views.join, name="join" ),
     path('qr/', views.qr, name="qr" ),
+    path('TwoFA/', views.TwoFA, name="TwoFA" ),
     path('signin/', views.signin, name="signin" ),
     path('add_account/', views.add_account, name="add_account" ),
     path('password/<int:account_id>/', views.password, name="password" ),
