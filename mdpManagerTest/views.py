@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from accounts.models import *
+import pyotp
 
 
 def home(request):
@@ -16,6 +17,18 @@ def home(request):
 def join(request):
     #sql_queries.print_users()
     return render(request,"join.html")
+
+def qr(request):
+    secret = pyotp.random_base32()
+    uri = pyotp.totp.TOTP(secret).provisioning_uri(name=request.user.username, issuer_name='SecUrKey')
+    context = {'secret':secret,'uri':uri}
+    return render(request,"qr.html",context)
+
+def TwoFA(request):
+    totp = pyotp.TOTP(token)
+    totp.now()
+    totp.verify()
+    return HttpResponseRedirect(reverse('passwords'))
 
 def signin(request):
     return render(request,"signin.html")

@@ -2,5 +2,5 @@ Django
 mysqlclient
 gunicorn
 django-cors-headers 
-django-two-factor-auth
-phonenumbers
+pyotp
+django-qr-code

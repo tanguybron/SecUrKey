@@ -17,14 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
-from two_factor.urls import urlpatterns as tf_urls
 
 
 urlpatterns = [
-    path('', include(tf_urls)),
     path('admin/', admin.site.urls),
     path('', views.home, name="home" ),
     path('join/', views.join, name="join" ),
+    path('qr/', views.qr, name="qr" ),
     path('signin/', views.signin, name="signin" ),
     path('add_account/', views.add_account, name="add_account" ),
     path('password/<int:account_id>/', views.password, name="password" ),
@@ -43,6 +42,4 @@ urlpatterns = [
     path('add_account/submit_account', views.submit_account, name='submit_account'),
     path('passwords/delete_accounts/<int:account_id>/', views.delete_accounts, name='delete_accounts'),
     path('passwords_json', views.passwords_json, name='passwords_json'),
-
-
 ]

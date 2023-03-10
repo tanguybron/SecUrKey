@@ -1,0 +1,26 @@
+{% load static %}
+{% load qr_code %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    </style>
+    <title>2FA</title>
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components.css' %}">
+</head>
+<body>
+    <h1 class="logo">SecUrKey</h1>
+    {% qr_from_text uri size="M" %}
+    <p>{{ secret }}</p>
+    <form action="{% url '' %}" method="post">
+        {% csrf_token %}
+        <input type="text" placeholder="2FA token">
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>
