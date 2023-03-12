@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from accounts.models import *
+from twofactor.models import *
+import pyotp
 
 
 def home(request):
@@ -59,7 +61,24 @@ def submit_join(request):
         user.save()
         user = authenticate(request, username=username, password=password)
         login(request, user)
+        return HttpResponseRedirect(reverse('qr'))
+
+@login_required    
+def qr(request):
+    secret = pyotp.random_base32()
+    uri = pyotp.totp.TOTP(secret).provisioning_uri(name=request.user.username, issuer_name='SecUrKey')
+    context = {'secret':secret,'uri':uri}
+    return render(request,"qr.html",context)
+
+@login_required
+def TwoFA(request):
+    totp = pyotp.TOTP(request.POST['key'])
+    if totp.verify(request.POST['token']) :
+        twofactor = TwoFactor(user=request.user,key=request.POST['key'])
+        twofactor.save()
         return HttpResponseRedirect(reverse('passwords'))
+    else :
+        return HttpResponseRedirect(reverse('qr'))
 
 def submit_signin(request):
     username = request.POST['username']
@@ -67,10 +86,24 @@ def submit_signin(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
-        return HttpResponseRedirect(reverse('passwords'))
+        return HttpResponseRedirect(reverse('TwoFAConnect'))
     else:
         messages.error(request,"Username or Password is incorrect")
         return HttpResponseRedirect(reverse('signin'))
+
+@login_required    
+def TwoFAConnect(request):
+    return render(request,"twofaconnect.html")
+
+@login_required    
+def submit_token(request):
+    user_token = request.POST['token']
+    twofa = TwoFactor.objects.get(user=request.user)
+    totp = pyotp.TOTP(twofa.key)
+    if totp.verify(user_token):
+        return HttpResponseRedirect(reverse('passwords'))
+    else :  
+        return HttpResponseRedirect(reverse('TwoFAConnect'))
 
 @login_required
 def edit_username(request):

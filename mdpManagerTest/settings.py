@@ -40,6 +40,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
+    'twofactor.apps.TwoFactorConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'qr_code',
 ]
 
 MIDDLEWARE = [
@@ -115,7 +117,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LOGIN_URL = '/signin/'
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/

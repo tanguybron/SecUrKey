@@ -15,22 +15,26 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name="home" ),
-    path('join/', views.join, name="join" ),
-    path('signin/', views.signin, name="signin" ),
-    path('add_account/', views.add_account, name="add_account" ),
-    path('password/<int:account_id>/', views.password, name="password" ),
+    path('', views.home, name="home"),
+    path('join/', views.join, name="join"),
+    path('qr/', views.qr, name="qr"),
+    path('qr/TwoFA/', views.TwoFA, name="TwoFA"),
+    path('TwoFAConnect/', views.TwoFAConnect, name="TwoFAConnect"),
+    path('TwoFAConnect/submit_token', views.submit_token, name="submit_token"),
+    path('signin/', views.signin, name="signin"),
+    path('add_account/', views.add_account, name="add_account"),
+    path('password/<int:account_id>/', views.password, name="password"),
     path('password/account_username/<int:account_id>/', views.account_username, name="account_username"),
     path('password/account_password/<int:account_id>/', views.account_password, name="account_password"),
     path('password/account_website/<int:account_id>/', views.account_website, name="account_website"),
-    path('passwords/', views.passwords, name="passwords" ),
-    path('profile/', views.profile, name="profile" ),
+    path('passwords/', views.passwords, name="passwords"),
+    path('profile/', views.profile, name="profile"),
     path('join/submit_join/', views.submit_join, name='submit_join'),
     path('signin/submit_signin/', views.submit_signin, name='submit_signin'),
     path('profile/edit_username/', views.edit_username, name='edit_username'),
@@ -41,6 +45,4 @@ urlpatterns = [
     path('add_account/submit_account', views.submit_account, name='submit_account'),
     path('passwords/delete_accounts/<int:account_id>/', views.delete_accounts, name='delete_accounts'),
     path('passwords_json', views.passwords_json, name='passwords_json'),
-
-
 ]
