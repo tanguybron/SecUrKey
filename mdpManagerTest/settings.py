@@ -40,6 +40,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
+    'twofactor.apps.TwoFactorConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
