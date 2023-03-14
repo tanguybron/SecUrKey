@@ -18,8 +18,14 @@
     },
     "permissions": [
         "activeTab",
-        "tabs"
+        "tabs",
+        "scripting",
+        "loginState",
+        "cookies"
     ],
+    "host_permissions": [
+        "https://localhost/*"
+      ],
     "content_scripts": [
         {
             "js": ["scripts/content.js"],

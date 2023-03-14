@@ -26,19 +26,21 @@ xhr.send();
 xhr.onreadystatechange = (e) => {
     data = xhr.responseText;
     var json;
-    try{
-        json = JSON.parse(data);
-    }catch(err){
-        err = err.toString();
-        if(err.includes("DOCTYPE")){
-            console.log("pas co");
-            document.getElementById("connected").style.display = "none";
-            document.getElementById("disconnected").style.display = "block";
-        }else{
-            document.getElementById("disconnected").style.display = "none";
-            document.getElementById("connected").style.display = "block";
-        }
-    }
+    // try{
+    //     json = JSON.parse(data);
+    // }catch(err){
+    //     err = err.toString();
+    //     if(err.includes("DOCTYPE")){
+    //         console.log("pas co");
+    //         document.getElementById("connected").style.display = "none";
+    //         document.getElementById("disconnected").style.display = "block";
+    //         chrome.runtime.sendMessage({ status:"OFF" },);
+    //     }else{
+    //         document.getElementById("disconnected").style.display = "none";
+    //         document.getElementById("connected").style.display = "block";
+    //         chrome.runtime.sendMessage({ status:"ON" },);
+    //     }
+    // }
 
     json = JSON.parse(data);
     for(var i = 0; i < json.length; i++) {
