@@ -49,58 +49,60 @@ def profile(request):
     return render(request,"profile.html")
 
 def submit_join(request):
-    username = request.POST['username']
-    email = request.POST['email']
-    password = request.POST['password']
-    check_user_db = User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()
+    request.session['username'] = request.POST['username']
+    request.session['email'] = request.POST['email']
+    request.session['password'] = request.POST['password']
+    check_user_db = User.objects.filter(username=request.POST['username']).exists() or User.objects.filter(email=request.POST['email']).exists()
     if check_user_db :
         messages.error(request,"Username or Email already exist")
         return HttpResponseRedirect(reverse('join'))
     else :
-        user = User.objects.create_user(username, email, password)
-        user.save()
-        user = authenticate(request, username=username, password=password)
-        login(request, user)
         return HttpResponseRedirect(reverse('qr'))
-
-@login_required    
+   
 def qr(request):
     secret = pyotp.random_base32()
-    uri = pyotp.totp.TOTP(secret).provisioning_uri(name=request.user.username, issuer_name='SecUrKey')
+    uri = pyotp.totp.TOTP(secret).provisioning_uri(name=request.session['username'], issuer_name='SecUrKey')
     context = {'secret':secret,'uri':uri}
     return render(request,"qr.html",context)
 
-@login_required
 def TwoFA(request):
+    username = request.session['username']
+    email = request.session['email']
+    password = request.session['password']
     totp = pyotp.TOTP(request.POST['key'])
     if totp.verify(request.POST['token']) :
-        twofactor = TwoFactor(user=request.user,key=request.POST['key'])
+        user = User.objects.create_user(username, email, password)
+        user.save()
+        user = authenticate(request, username=username, password=password)
+        twofactor = TwoFactor(user=user,key=request.POST['key'])
         twofactor.save()
+        login(request, user)
         return HttpResponseRedirect(reverse('passwords'))
     else :
         return HttpResponseRedirect(reverse('qr'))
 
 def submit_signin(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(request, username=username, password=password)
+    request.session['username'] = request.POST['username']
+    request.session['password'] = request.POST['password']
+    user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
     if user is not None:
-        login(request, user)
         return HttpResponseRedirect(reverse('TwoFAConnect'))
     else:
         messages.error(request,"Username or Password is incorrect")
         return HttpResponseRedirect(reverse('signin'))
 
-@login_required    
 def TwoFAConnect(request):
     return render(request,"twofaconnect.html")
-
-@login_required    
+  
 def submit_token(request):
+    username = request.session['username']
+    password = request.session['password']
     user_token = request.POST['token']
-    twofa = TwoFactor.objects.get(user=request.user)
+    user = authenticate(request, username=username, password=password)
+    twofa = TwoFactor.objects.get(user=user)
     totp = pyotp.TOTP(twofa.key)
     if totp.verify(user_token):
+        login(request, user)
         return HttpResponseRedirect(reverse('passwords'))
     else :  
         return HttpResponseRedirect(reverse('TwoFAConnect'))
