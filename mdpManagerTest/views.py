@@ -9,6 +9,7 @@ from django.contrib import messages
 from accounts.models import *
 from twofactor.models import *
 import pyotp
+from datetime import datetime
 
 
 def home(request):
@@ -49,58 +50,60 @@ def profile(request):
     return render(request,"profile.html")
 
 def submit_join(request):
-    username = request.POST['username']
-    email = request.POST['email']
-    password = request.POST['password']
-    check_user_db = User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()
+    request.session['username'] = request.POST['username']
+    request.session['email'] = request.POST['email']
+    request.session['password'] = request.POST['password']
+    check_user_db = User.objects.filter(username=request.POST['username']).exists() or User.objects.filter(email=request.POST['email']).exists()
     if check_user_db :
         messages.error(request,"Username or Email already exist")
         return HttpResponseRedirect(reverse('join'))
     else :
-        user = User.objects.create_user(username, email, password)
-        user.save()
-        user = authenticate(request, username=username, password=password)
-        login(request, user)
         return HttpResponseRedirect(reverse('qr'))
-
-@login_required    
+   
 def qr(request):
     secret = pyotp.random_base32()
-    uri = pyotp.totp.TOTP(secret).provisioning_uri(name=request.user.username, issuer_name='SecUrKey')
+    uri = pyotp.totp.TOTP(secret).provisioning_uri(name=request.session['username'], issuer_name='SecUrKey')
     context = {'secret':secret,'uri':uri}
     return render(request,"qr.html",context)
 
-@login_required
 def TwoFA(request):
+    username = request.session['username']
+    email = request.session['email']
+    password = request.session['password']
     totp = pyotp.TOTP(request.POST['key'])
     if totp.verify(request.POST['token']) :
-        twofactor = TwoFactor(user=request.user,key=request.POST['key'])
+        user = User.objects.create_user(username, email, password)
+        user.save()
+        user = authenticate(request, username=username, password=password)
+        twofactor = TwoFactor(user=user,key=request.POST['key'])
         twofactor.save()
+        login(request, user)
         return HttpResponseRedirect(reverse('passwords'))
     else :
         return HttpResponseRedirect(reverse('qr'))
 
 def submit_signin(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(request, username=username, password=password)
+    request.session['username'] = request.POST['username']
+    request.session['password'] = request.POST['password']
+    user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
     if user is not None:
-        login(request, user)
         return HttpResponseRedirect(reverse('TwoFAConnect'))
     else:
         messages.error(request,"Username or Password is incorrect")
         return HttpResponseRedirect(reverse('signin'))
 
-@login_required    
 def TwoFAConnect(request):
     return render(request,"twofaconnect.html")
-
-@login_required    
+  
 def submit_token(request):
+    username = request.session['username']
+    password = request.session['password']
     user_token = request.POST['token']
-    twofa = TwoFactor.objects.get(user=request.user)
+    user = authenticate(request, username=username, password=password)
+    twofa = TwoFactor.objects.get(user=user)
     totp = pyotp.TOTP(twofa.key)
     if totp.verify(user_token):
+        login(request, user)
         return HttpResponseRedirect(reverse('passwords'))
     else :  
         return HttpResponseRedirect(reverse('TwoFAConnect'))
@@ -173,7 +176,9 @@ def submit_account(request):
     website = request.POST['website']
     email = request.POST['email']
     password = request.POST['password']
-    account = Account(user=request.user,title=website,username=email,password=password,website=website,creation="0",last_modification="0")
+    now = datetime.now()
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+    account = Account(user=request.user,title=website,username=email,password=password,website=website,creation=dt_string,last_modification=dt_string)
     account.save()
     return HttpResponseRedirect(reverse('passwords'))
 
@@ -192,6 +197,9 @@ def account_username(request,account_id):
     username = request.POST['username']
     account = Account.objects.get(pk=account_id)
     account.username = username
+    now = datetime.now()
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+    account.last_modification = dt_string
     account.save()
     return HttpResponseRedirect(reverse('password',args=[account_id]))
 
@@ -200,6 +208,9 @@ def account_password(request,account_id):
     password = request.POST['password']
     account = Account.objects.get(pk=account_id)
     account.password = password
+    now = datetime.now()
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+    account.last_modification = dt_string
     account.save()
     return HttpResponseRedirect(reverse('password',args=[account_id]))
 
@@ -208,6 +219,9 @@ def account_website(request,account_id):
     website = request.POST['website']
     account = Account.objects.get(pk=account_id)
     account.website = website
+    now = datetime.now()
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+    account.last_modification = dt_string
     account.save()
     return HttpResponseRedirect(reverse('password',args=[account_id]))
 
