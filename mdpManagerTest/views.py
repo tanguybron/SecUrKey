@@ -9,6 +9,7 @@ from django.contrib import messages
 from accounts.models import *
 from twofactor.models import *
 import pyotp
+from datetime import datetime
 
 
 def home(request):
@@ -175,7 +176,9 @@ def submit_account(request):
     website = request.POST['website']
     email = request.POST['email']
     password = request.POST['password']
-    account = Account(user=request.user,title=website,username=email,password=password,website=website,creation="0",last_modification="0")
+    now = datetime.now()
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+    account = Account(user=request.user,title=website,username=email,password=password,website=website,creation=dt_string,last_modification=dt_string)
     account.save()
     return HttpResponseRedirect(reverse('passwords'))
 
@@ -194,6 +197,9 @@ def account_username(request,account_id):
     username = request.POST['username']
     account = Account.objects.get(pk=account_id)
     account.username = username
+    now = datetime.now()
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+    account.last_modification = dt_string
     account.save()
     return HttpResponseRedirect(reverse('password',args=[account_id]))
 
@@ -202,6 +208,9 @@ def account_password(request,account_id):
     password = request.POST['password']
     account = Account.objects.get(pk=account_id)
     account.password = password
+    now = datetime.now()
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+    account.last_modification = dt_string
     account.save()
     return HttpResponseRedirect(reverse('password',args=[account_id]))
 
@@ -210,6 +219,9 @@ def account_website(request,account_id):
     website = request.POST['website']
     account = Account.objects.get(pk=account_id)
     account.website = website
+    now = datetime.now()
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+    account.last_modification = dt_string
     account.save()
     return HttpResponseRedirect(reverse('password',args=[account_id]))
 
