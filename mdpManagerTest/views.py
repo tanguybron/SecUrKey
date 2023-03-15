@@ -78,7 +78,10 @@ def TwoFA(request):
         twofactor = TwoFactor(user=user,key=request.POST['key'])
         twofactor.save()
         login(request, user)
-        return HttpResponseRedirect(reverse('passwords'))
+        response = HttpResponseRedirect(reverse('passwords'))
+        response.set_cookie('logged_in_cookie','logged_in',max_age=3600,secure=True,httponly=True)
+        return response
+        # return HttpResponseRedirect(reverse('passwords'))
     else :
         return HttpResponseRedirect(reverse('qr'))
 
