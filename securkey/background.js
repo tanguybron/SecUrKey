@@ -11,7 +11,6 @@ function getCookies(domain, name, callback) {
 }
 
 function change_state(){
-    console.log("clicked");
     getCookies("https://localhost", "logged_in_cookie", function(cookie) {
         if(cookie != null){
             getCookies("https://localhost", "sessionid", function(cookie) {
