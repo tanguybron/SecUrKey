@@ -13,7 +13,7 @@ h1{
 
 body {
     padding: 20px;
-    height: 500px;
+    height: 300px;
     width: 200px;
     background: linear-gradient(171.32deg, #0E50E3 0%, #143268 100%);
     color: white;
@@ -113,9 +113,4 @@ button{
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.rond{
-    width: 20px;
-    margin-left: 20%;
 }
