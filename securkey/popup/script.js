@@ -1,8 +1,6 @@
 function get_pass(active_domain){
     // get source code of the page https://localhost/passwords_json
     const xhr = new XMLHttpRequest();
-    console.log("2: "+active_domain);
-    console.log("3: "+active_domain);
     const url='https://localhost/passwords_json/'+active_domain;
     xhr.open("GET", url);
     xhr.send();
@@ -12,7 +10,6 @@ function get_pass(active_domain){
 
         json = JSON.parse(data);
         for(var i = 0; i < json.length; i++) {
-            console.log("4: "+ active_domain);
             if(json[i].fields.website == active_domain){
                 document.getElementById("username").innerHTML = "username : " + json[i].fields.username;
                 document.getElementById("password").innerHTML = "password : " + json[i].fields.password;
@@ -68,6 +65,5 @@ try{
 chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     var activeTab = tabs[0];
     var active_domain = activeTab.url.replace("https://", "").replace("http://", "").replace("www.", "").split("/")[0];
-    console.log("1: " + active_domain);
     get_pass(active_domain);
 });
