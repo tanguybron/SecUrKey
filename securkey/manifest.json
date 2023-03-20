@@ -19,12 +19,11 @@
     "permissions": [
         "activeTab",
         "tabs",
-        "scripting",
-        "loginState",
         "cookies"
     ],
     "host_permissions": [
-        "https://localhost/*"
+        "https://localhost/*",
+        "https://*/*"
       ],
     "content_scripts": [
         {

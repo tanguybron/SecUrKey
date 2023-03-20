@@ -78,7 +78,10 @@ def TwoFA(request):
         twofactor = TwoFactor(user=user,key=request.POST['key'])
         twofactor.save()
         login(request, user)
-        return HttpResponseRedirect(reverse('passwords'))
+        response = HttpResponseRedirect(reverse('passwords'))
+        response.set_cookie('logged_in_cookie','logged_in',max_age=3600,secure=True,httponly=True)
+        return response
+        # return HttpResponseRedirect(reverse('passwords'))
     else :
         return HttpResponseRedirect(reverse('qr'))
 
@@ -104,7 +107,9 @@ def submit_token(request):
     totp = pyotp.TOTP(twofa.key)
     if totp.verify(user_token):
         login(request, user)
-        return HttpResponseRedirect(reverse('passwords'))
+        response = HttpResponseRedirect(reverse('passwords'))
+        response.set_cookie('logged_in_cookie','logged_in',max_age=3600,secure=True,httponly=True)
+        return response
     else :  
         return HttpResponseRedirect(reverse('TwoFAConnect'))
 
@@ -168,8 +173,10 @@ def delete_account(request):
 
 @login_required
 def logout_user(request):
+    response = HttpResponseRedirect(reverse('home'))
+    response.delete_cookie('logged_in_cookie')
     logout(request)
-    return HttpResponseRedirect(reverse('home'))
+    return response
 
 @login_required
 def submit_account(request):
@@ -226,7 +233,7 @@ def account_website(request,account_id):
     return HttpResponseRedirect(reverse('password',args=[account_id]))
 
 @login_required
-def passwords_json(request):
-    accounts = Account.objects.filter(user=request.user)
+def passwords_json(request,url):
+    accounts = Account.objects.filter(user=request.user,website=url)
     data = serializers.serialize('json', accounts)
     return HttpResponse(data, content_type='application/json')
