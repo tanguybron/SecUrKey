@@ -1,20 +1,25 @@
-function Generate_password(letter,digits,punctuation,lengthPassword) 
+function Generate_password() 
 {
+    var passwordInput = document.getElementById("password");
+    var letter = document.getElementById("toggleLetter").value;
+    var digits = document.getElementById("toggleNumber").value;
+    var punctuation = document.getElementById("toggleSpecial").value;
+    var lengthPassword = document.getElementById("passwordLength").value;
     var listchar="";
     var password="";
     var lenPassword;
 
-    if(letter)
+    if(letter==1)
     {
         listchar += "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" ;
     }
 
-    if(digits)
+    if(digits==1)
     {
         listchar += "0123456789" ;
     }
 
-    if(punctuation)
+    if(punctuation==1)
     {
         listchar += "~`!@#$%^&*()_-+={[}]|\\:;\"'<,>.?/" ;
     }
@@ -24,7 +29,8 @@ function Generate_password(letter,digits,punctuation,lengthPassword)
     {
         password+=listchar.charAt(getRandomIntInclusive(0,listchar.length-1));
     }
-    return password;
+    passwordInput.type = "text";
+    document.getElementById("password").value = password;
 }
 
 function Generate_password_default() 
