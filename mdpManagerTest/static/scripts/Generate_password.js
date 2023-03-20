@@ -27,6 +27,21 @@ function Generate_password(letter,digits,punctuation,lengthPassword)
     return password;
 }
 
+function Generate_password_default() 
+{
+    var passwordInput = document.getElementById("password");
+    var listchar="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~`!@#$%^&*()_-+={[}]|\\:;\"'<,>.?/";
+    var password="";
+    var lenPassword=listchar.length;
+
+    for(var i=0;i<16;i++)
+    {
+        password+=listchar.charAt(getRandomIntInclusive(0,listchar.length-1));
+    }
+    passwordInput.type = "text";
+    document.getElementById("password").value = password;
+}
+
 
 
 function getRandomIntInclusive(min, max) {
@@ -54,7 +69,7 @@ function decrypting(crypt, passPhrase)
 }
 
 
-var password=generate_password(1,1,1,16);
+/* var password=generate_password(1,1,1,16);
 var encrypted=encrypting(password,"abc");
 
 //var password2=generate_password(1,1,1,8);
@@ -76,4 +91,4 @@ console.log(decrypted.toString(CryptoJS.enc.Utf8));
 // On doit stocker le encrypted pour decrypted
 // Pb : l'encrypted stock la clé, l'iv, le salt et le cipher
 // Ca implique que si un gars accède à la BDD, il choppe tout
-// et n'a qu'a faire une attaque sur la phrase de passe
+// et n'a qu'a faire une attaque sur la phrase de passe */
