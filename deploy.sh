@@ -2,13 +2,13 @@
 
 # installation de python et pip
 echo -n "Installation de python3 et pip...  "
-apt install python3-pip 2>/dev/null >/dev/null
+apt install python3-pip docker-compose -y 2>/dev/null >/dev/null
 echo -n "  0K"
 echo
 
 # installation module Django
 echo -n "Installation module Django...  "
-pip install django 2>/dev/null >/dev/null
+pip install django -y 2>/dev/null >/dev/null
 echo -n "  0K"
 echo
 
