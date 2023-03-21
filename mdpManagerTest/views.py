@@ -189,7 +189,6 @@ def submit_account(request):
     account.save()
     return HttpResponseRedirect(reverse('passwords'))
 
-
 @login_required
 def delete_accounts(request, account_id):
     account = get_object_or_404(Account, pk=account_id)

@@ -7,6 +7,7 @@ function Generate_password()
     var lengthPassword = document.getElementById("passwordLength").value;
     var listchar="";
     var password="";
+
     var lenPassword;
 
     if(letter==1)
@@ -73,6 +74,7 @@ function decrypting(crypt, passPhrase)
 {
     return CryptoJS.AES.decrypt(crypt, passPhrase);
 }
+
 
 
 /* var password=generate_password(1,1,1,16);
