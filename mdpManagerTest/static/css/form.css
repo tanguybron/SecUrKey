@@ -27,3 +27,23 @@ form {
     flex-direction: column;
     align-items: center;
 }
+
+a {
+    text-decoration: none;
+  }
+
+  a:link {
+    color: black; /* couleur du lien normal */
+  }
+
+  a:visited {
+    color: gray; /* couleur du lien visité */
+  }
+
+  a:hover {
+    color: red; /* couleur du lien au survol de la souris */
+  }
+
+  a:active {
+    color: green; /* couleur du lien au moment du clic */
+  }

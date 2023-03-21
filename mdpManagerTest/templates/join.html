@@ -29,6 +29,7 @@
             <input type="password" name="password" id="password" placeholder="Password" required oninput="updateProgressBar()">
             <div id="strength-bar"></div> 
             <input type="password" name="verifpassword" id="verifpassword" placeholder="Verify password" required>  
+            <p>Already have an account? <span><a href="{% url 'signin' %}">Sign in</a></span></p>
         </div>
         <input id="btn-create" type="submit" value="Create" class="border-button">
     </form>
