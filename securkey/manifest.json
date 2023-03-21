@@ -20,7 +20,7 @@
         "activeTab",
         "tabs",
         "cookies",
-        "webRequest",
+        "webRequest"
     ],
     "host_permissions": [
         "https://localhost/*",
