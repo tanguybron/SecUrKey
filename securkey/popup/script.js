@@ -69,3 +69,11 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     var active_domain = activeTab.url.replace("https://", "").replace("http://", "").replace("www.", "").split("/")[0];
     get_pass(active_domain);
 });
+
+
+// chrome.runtime.onMessage.addListener((request, sender, sendResponse) =>{
+//     console.log("Bien recu");
+//     console.log("username : "+ request.username);
+//     console.log("password: "+ request.password);
+//     console.log("url : "+ request.url);
+// });
