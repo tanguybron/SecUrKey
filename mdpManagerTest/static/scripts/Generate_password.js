@@ -98,8 +98,8 @@ function encrypting()
     console.log("- mode: " + encryptionResult.mode);
     console.log("- padding: " + encryptionResult.padding);
     
-    document.getElementById("encryptedPassword").value = encryptionResult;
-    document.getElementById("password").value = encryptionResult;
+    document.getElementById("encryptedPassword").value = encryptionResult.ciphertext;
+    document.getElementById("password").value = encryptionResult.ciphertext;
 
 
     document.getElementById("key").value = key;
