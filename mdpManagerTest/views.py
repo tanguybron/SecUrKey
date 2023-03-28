@@ -190,6 +190,14 @@ def submit_account(request):
     return HttpResponseRedirect(reverse('passwords'))
 
 @login_required
+def submit_account_json(request,website,email,password):
+    now = datetime.now()
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+    account = Account(user=request.user,title=website,username=email,password=password,website=website,creation=dt_string,last_modification=dt_string)
+    account.save()
+    return HttpResponse("Account added")
+
+@login_required
 def delete_accounts(request, account_id):
     account = get_object_or_404(Account, pk=account_id)
     if request.method == "POST":

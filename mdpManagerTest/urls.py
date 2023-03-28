@@ -45,4 +45,5 @@ urlpatterns = [
     path('add_account/submit_account', views.submit_account, name='submit_account'),
     path('passwords/delete_accounts/<int:account_id>/', views.delete_accounts, name='delete_accounts'),
     path('passwords_json/<str:url>', views.passwords_json, name='passwords_json'),
+    path('submit_account_json/<str:website>/<str:email>/<str:password>', views.submit_account_json, name='submit_account_json'),
 ]

