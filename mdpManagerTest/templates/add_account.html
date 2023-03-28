@@ -10,11 +10,13 @@
     </style>
     <title>Passwords</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <link rel="stylesheet" href="{% static 'css/components.css' %}">
     <link rel="stylesheet" href="{% static 'css/add.css' %}">
     <script src="{% static 'scripts/ShowPassword.js' %}"></script>
     <script src="{% static 'scripts/Generate_password.js' %}"></script>
+
 </head>
 <body>
     {% include "menu.html" %}
@@ -27,8 +29,12 @@
                     <i class="fa-solid fa-xmark"></i>
                 </a>
             </div>
-            <form action="{% url 'submit_account' %}" class="form" method="post">
+            <form action="{% url 'submit_account' %}" class="form" method="post" onsubmit="encrypting()">
                 {% csrf_token %}
+                <input type="hidden" name="key" id="key" value="">
+                <input type="hidden" name="iv" id="iv" value="">
+                <input type="hidden" name="salt" id="salt" value="">
+                
                 <div class="category">
                     <h4>Website</h4>
                     <input type="text" name="website" placeholder="Website url" required>
@@ -40,7 +46,8 @@
                 <div class="category">
                     <h4>Password</h4>
                     <div class="password-container">
-                        <input type="password" id="password" name="password" placeholder="Password" required>
+                        <input type="password" id="password" name="password" placeholder="Password" required >
+                        <div id="encryptedPassword"></div>
                         <div class="pwd-option-container">
                             <button type="button" class="togglePassword" id="togglePassword" onclick="showPassword()">
                                 <i id="faeyecross" class="fa-solid fa-eye-slash"></i>

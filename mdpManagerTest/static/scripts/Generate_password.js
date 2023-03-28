@@ -18,7 +18,7 @@ function Generate_password()
     if(digits==1)
     {
         listchar += "0123456789" ;
-    }
+    }CryptoJS
 
     if(punctuation==1)
     {
@@ -32,10 +32,13 @@ function Generate_password()
     }
     passwordInput.type = "text";
     document.getElementById("password").value = password;
-}
+/*     encrypting();
+ */}
 
 function Generate_password_default() 
 {
+    console.log("chesh2");
+
     var passwordInput = document.getElementById("password");
     var listchar="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~`!@#$%^&*()_-+={[}]|\\:;\"'<,>.?/";
     var password="";
@@ -47,7 +50,8 @@ function Generate_password_default()
     }
     passwordInput.type = "text";
     document.getElementById("password").value = password;
-}
+/*     encrypting();
+ */}
 
 
 
@@ -63,36 +67,85 @@ function getRandomIntInclusive(min, max) {
 
 
 
-function encrypting(password, passPhrase)
+function encrypting()
 {
-    return CryptoJS.AES.encrypt(password, passPhrase);
+    var password = document.getElementById("password").value;
+    var passPhrase="shesh";
+
+    //document.getElementById("encryptedPassword").value = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(password), passPhrase);
+    //document.getElementById("password").value = document.getElementById("encryptedPassword").value;
+    
+    //console.log(document.getElementById("password").value);
+    /*     console.log(document.getElementById("encryptedPassword").value); */
+    //console.dir(document.getElementById("encryptedPassword").value);
+
+    var encryptionResult = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(password), passPhrase);
+
+    // Mettre à jour les champs cachés avec les valeurs de key, iv et salt
+    var key = JSON.stringify(encryptionResult.key);
+
+    var iv = JSON.stringify(encryptionResult.iv);
+
+    var salt = JSON.stringify(encryptionResult.salt);
+
+    console.log("Encryption result:");
+    console.log("- $super: " + JSON.stringify(encryptionResult.$super));
+    console.log("- ciphertext: " + encryptionResult.ciphertext);
+    console.log("- key: " + JSON.stringify(encryptionResult.key));
+    console.log("- iv: " + JSON.stringify(encryptionResult.iv));
+    console.log("- salt: " + JSON.stringify(encryptionResult.salt));
+    console.log("- algorithm: " + encryptionResult.algorithm);
+    console.log("- mode: " + encryptionResult.mode);
+    console.log("- padding: " + encryptionResult.padding);
+    
+    document.getElementById("encryptedPassword").value = encryptionResult;
+    document.getElementById("password").value = encryptionResult;
+
+
+    document.getElementById("key").value = key;
+    document.getElementById("iv").value = iv;
+    document.getElementById("salt").value = salt;
+
+    console.log(document.getElementById("key").value);
+    console.log(document.getElementById("iv").value);
+    console.log(document.getElementById("salt").value);
+
+    var result = confirm("Are you sure to delete?");
+    if(result){
+    }
+
 }
 
 
-
-function decrypting(crypt, passPhrase)
+function decrypting(cryptedPassword)
 {
-    return CryptoJS.AES.decrypt(crypt, passPhrase);
-}
+    //============================================================================
+    // ligne a rajouter dans le .html pour stocker le crypter ou le decrypter :
+    //                         <div id="encryptedPassword"></div>
+    //                         <div id="decryptedPassword"></div>
+    //============================================================================
+    //var crypt = document.getElementById("encryptedPassword").value;
+    var passPhrase="shesh";
+    return CryptoJS.AES.decrypt(cryptedPassword, passPhrase).toString(CryptoJS.enc.Utf8);
+
+    //document.getElementById("decryptedPassword").value = decrypted.toString(CryptoJS.enc.Utf8);
+/*     console.log(decrypted.toString(CryptoJS.enc.Utf8));
+ */}
+
 
 
 
 /* var password=generate_password(1,1,1,16);
+
 var encrypted=encrypting(password,"abc");
 
-//var password2=generate_password(1,1,1,8);
-// var encrypted2=encrypting(password2,"abcd");
-
 var decrypted=decrypting(encrypted,"abc");
-// var decrypted2=decrypting(encrypted2,"abcd");
 
 console.log(password);
+
 console.log(encrypted.ciphertext.toString());
-// console.log(password2);
-// console.log(encrypted2.ciphertext.toString());
 
 console.log(decrypted.toString(CryptoJS.enc.Utf8));
-// console.log(decrypted2.toString(CryptoJS.enc.Utf8));
 
 // Problème de stockage :
 // https://cryptojs.gitbook.io/docs/
