@@ -183,12 +183,9 @@ def submit_account(request):
     website = request.POST['website']
     email = request.POST['email']
     password = request.POST['password']
-    key = request.POST['key']
-    iv = request.POST['iv']
-    salt = request.POST['salt']
     now = datetime.now()
     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-    account = Account(user=request.user,title=website,username=email,password=password,key=key,iv=iv,salt=salt,website=website,creation=dt_string,last_modification=dt_string)
+    account = Account(user=request.user,title=website,username=email,password=password,website=website,creation=dt_string,last_modification=dt_string)
     account.save()
     return HttpResponseRedirect(reverse('passwords'))
 

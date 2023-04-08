@@ -10,7 +10,4 @@ class Account(models.Model):
     website = models.CharField(max_length=50)
     creation = models.CharField(max_length=50)
     last_modification = models.CharField(max_length=50)
-    key = models.CharField(max_length=255, default='000000')
-    iv = models.CharField(max_length=255, default='000000')
-    salt = models.CharField(max_length=255, default='000000')
     

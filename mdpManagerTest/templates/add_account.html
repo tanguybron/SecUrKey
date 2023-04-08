@@ -30,11 +30,7 @@
                 </a>
             </div>
             <form action="{% url 'submit_account' %}" class="form" method="post" onsubmit="encrypting()">
-                {% csrf_token %}
-                <input type="hidden" name="key" id="key" value="">
-                <input type="hidden" name="iv" id="iv" value="">
-                <input type="hidden" name="salt" id="salt" value="">
-                
+                {% csrf_token %}                
                 <div class="category">
                     <h4>Website</h4>
                     <input type="text" name="website" placeholder="Website url" required>
@@ -47,7 +43,6 @@
                     <h4>Password</h4>
                     <div class="password-container">
                         <input type="password" id="password" name="password" placeholder="Password" required >
-                        <div id="encryptedPassword"></div>
                         <div class="pwd-option-container">
                             <button type="button" class="togglePassword" id="togglePassword" onclick="showPassword()">
                                 <i id="faeyecross" class="fa-solid fa-eye-slash"></i>
