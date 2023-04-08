@@ -18,7 +18,7 @@ function Generate_password()
     if(digits==1)
     {
         listchar += "0123456789" ;
-    }
+    }CryptoJS
 
     if(punctuation==1)
     {
@@ -36,6 +36,8 @@ function Generate_password()
 
 function Generate_password_default() 
 {
+    console.log("chesh2");
+
     var passwordInput = document.getElementById("password");
     var listchar="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~`!@#$%^&*()_-+={[}]|\\:;\"'<,>.?/";
     var password="";
@@ -63,40 +65,17 @@ function getRandomIntInclusive(min, max) {
 
 
 
-function encrypting(password, passPhrase)
+function encrypting()
 {
-    return CryptoJS.AES.encrypt(password, passPhrase);
+    var password = document.getElementById("password").value;
+    var passPhrase="shesh";
+    var encryptionResult = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(password), passPhrase);
+    document.getElementById("password").value = ""+encryptionResult;
+
+    console.log(CryptoJS.AES.decrypt(encryptionResult, passPhrase));
+
+    var result = confirm("Are you sure to delete?");
+    if(result){
+    }
+
 }
-
-
-
-function decrypting(crypt, passPhrase)
-{
-    return CryptoJS.AES.decrypt(crypt, passPhrase);
-}
-
-
-
-/* var password=generate_password(1,1,1,16);
-var encrypted=encrypting(password,"abc");
-
-//var password2=generate_password(1,1,1,8);
-// var encrypted2=encrypting(password2,"abcd");
-
-var decrypted=decrypting(encrypted,"abc");
-// var decrypted2=decrypting(encrypted2,"abcd");
-
-console.log(password);
-console.log(encrypted.ciphertext.toString());
-// console.log(password2);
-// console.log(encrypted2.ciphertext.toString());
-
-console.log(decrypted.toString(CryptoJS.enc.Utf8));
-// console.log(decrypted2.toString(CryptoJS.enc.Utf8));
-
-// Problème de stockage :
-// https://cryptojs.gitbook.io/docs/
-// On doit stocker le encrypted pour decrypted
-// Pb : l'encrypted stock la clé, l'iv, le salt et le cipher
-// Ca implique que si un gars accède à la BDD, il choppe tout
-// et n'a qu'a faire une attaque sur la phrase de passe */
