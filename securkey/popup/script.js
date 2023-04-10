@@ -1,3 +1,10 @@
+function decrypting(cryptedPassword)
+{
+    var passPhrase="shesh";
+    return CryptoJS.AES.decrypt(cryptedPassword, passPhrase).toString(CryptoJS.enc.Utf8);
+
+}
+
 function get_pass(active_domain){
     // get source code of the page https://localhost/passwords_json
     const xhr = new XMLHttpRequest();
@@ -22,6 +29,7 @@ function get_pass(active_domain){
                 document.getElementById("button_login").style.display = "block";
                 window.location.href = "./not_found.html";
             }else{
+                password_found = decrypting(password_found);
                 document.getElementById("button_login").style.display = "none";
                 chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
                     chrome.tabs.sendMessage(

