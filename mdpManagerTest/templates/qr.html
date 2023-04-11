@@ -19,9 +19,9 @@
     <p>{{ secret }}</p>
     <form action="{% url 'TwoFA' %}" method="post">
         {% csrf_token %}
-        <input type="text" name="token" placeholder="2FA token">
-        <input name="key" value="{{secret}}">
-        <button type="submit">Send</button>
+        <input type="text" name="token" placeholder="2FA token"  class="toggleqr">
+        <input name="key" value="{{secret}}"  class="toggleqr" id="hide">
+        <button type="submit" class="border-button">Send</button>
     </form>
 </body>
 </html>
