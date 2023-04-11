@@ -16,8 +16,8 @@
     <h1 class="logo">SecUrKey</h1>
     <form action="{% url 'submit_token' %}" method="post">
         {% csrf_token %}
-        <input type="text" name="token" placeholder="2FA token">
-        <button type="submit">Send</button>
+        <input type="text" name="token" placeholder="2FA token" class="toggle2FA">
+        <button type="submit" class="border-button">Send</button>
     </form>
 </body>
 </html>
