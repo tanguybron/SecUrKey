@@ -24,6 +24,8 @@ btn3List.forEach(btn3 => {
 function decrypting(cryptedPassword)
 {
     var passPhrase="shesh";
-    return CryptoJS.AES.decrypt(cryptedPassword, passPhrase).toString(CryptoJS.enc.Utf8);
-
+    var to_return = cryptedPassword.replaceAll("sheeeeeesh","/");
+    to_return = CryptoJS.AES.decrypt(to_return, passPhrase).toString(CryptoJS.enc.Utf8);
+    return to_return;
 }
+
