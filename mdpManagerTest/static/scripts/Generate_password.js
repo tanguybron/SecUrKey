@@ -36,13 +36,9 @@ function Generate_password()
 
 function Generate_password_default() 
 {
-    console.log("chesh2");
-
     var passwordInput = document.getElementById("password");
     var listchar="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~`!@#$%^&*()_-+={[}]|\\:;\"'<,>.?/";
     var password="";
-    var lenPassword=listchar.length;
-
     for(var i=0;i<16;i++)
     {
         password+=listchar.charAt(getRandomIntInclusive(0,listchar.length-1));
@@ -71,9 +67,12 @@ function encrypting()
     var passPhrase="shesh";
     var encryptionResult = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(password), passPhrase);
     document.getElementById("password").value = ""+encryptionResult;
+}
 
-    console.log(CryptoJS.AES.decrypt(encryptionResult, passPhrase));
-
-    // var result = confirm("Are you sure to delete?");
-
+function encryptingParam(password)
+{
+    console.log(password);
+    var passPhrase="shesh";
+    var encryptionResult = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(password), passPhrase);
+    document.getElementById("password").value = ""+encryptionResult;
 }
