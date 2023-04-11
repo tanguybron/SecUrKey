@@ -71,6 +71,7 @@ input:active, input:focus {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .form-popup input{
@@ -81,6 +82,24 @@ input:active, input:focus {
     font-family: "Inter",sans-serif;
     font-weight: 700;
     border: 2px solid black;
+}
+
+.close-button {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: white;
+    border: 2px solid #000000;
+    border-radius: 20px;
+    color: #000000;
+    /*float: right;*/
+    position: absolute; /* ajout de cette propriété */
+    top: -46px; /*ajuster la position verticale*/
+    right: -46px; /*ajuster la position horizontale*/
+}
+
+.close-button:hover {
+  color: #FFF; 
+  background-color: #000000; 
 }
 
 .close-button {
