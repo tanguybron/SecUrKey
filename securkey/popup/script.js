@@ -67,7 +67,7 @@ try{
     });
 
     document.getElementById("button_password").addEventListener('click' , function() {
-        navigator.clipboard.writeText(document.getElementById("password").innerHTML.split(" : ")[1]);
+        navigator.clipboard.writeText(decrypting(document.getElementById("password").innerHTML.split(" : ")[1]));
         document.getElementById("button_password").innerHTML = "copied";
     });
 }catch(err){ // si dans page not_found.html 
