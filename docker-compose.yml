@@ -17,7 +17,7 @@ services:
       - /bin/bash
       - -c
       - |
-        sleep 3
+        sleep 15
         python3 manage.py makemigrations
         python3 manage.py migrate
         gunicorn --bind 0.0.0.0:8000 mdpManagerTest.wsgi
