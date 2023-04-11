@@ -28,7 +28,7 @@ DB_PASSWORD = os.getenv('MYSQL_PASSWORD')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','securkey.local']
+ALLOWED_HOSTS = ['localhost','securkey.local','pc5008-34']
 
 CORS_ALLOWED_ORIGINS = [
     "chrome-extension://keeemmciakkaopfkllbpnjhjfhlnebnp",
@@ -129,7 +129,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-CSRF_TRUSTED_ORIGINS = ['https://localhost']
+CSRF_TRUSTED_ORIGINS = ['https://localhost','https://pc5008-34']
 
 # COOKIE
 
