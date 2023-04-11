@@ -1,7 +1,9 @@
 function decrypting(cryptedPassword)
 {
     var passPhrase="shesh";
-    return CryptoJS.AES.decrypt(cryptedPassword, passPhrase).toString(CryptoJS.enc.Utf8);
+    to_return = CryptoJS.AES.decrypt(cryptedPassword, passPhrase).toString(CryptoJS.enc.Utf8)
+    to_return = to_return.replaceAll("sheeeeeesh","/")
+    return to_return;
 
 }
 
