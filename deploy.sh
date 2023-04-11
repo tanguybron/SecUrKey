@@ -8,7 +8,7 @@ echo
 
 # installation module Django
 echo -n "Installation module Django...  "
-pip install django -y 2>/dev/null >/dev/null
+pip install django >/dev/null
 echo -n "  0K"
 echo
 
@@ -61,7 +61,10 @@ echo -n "  OK"
 echo
 
 echo "Fin de la creation des fichiers."
+echo
 echo "Pour lancer l'application, executez la commande :"
 echo "docker-compose build --force-rm; docker-compose up"
-
+echo
 echo "En cas de problème (ERREUR CONNEXION A LA BDD), executez la commande : docker-compose down, puis relancez l'application : docker-compose up --build"
+
+docker-compose build --force-rm; docker-compose up
