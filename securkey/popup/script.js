@@ -8,9 +8,9 @@ function decrypting(cryptedPassword)
 }
 
 function get_pass(active_domain){
-    // get source code of the page https://localhost/passwords_json
+    // get source code of the page https://pc5008-34/passwords_json
     const xhr = new XMLHttpRequest();
-    const url='https://localhost/passwords_json/'+active_domain;
+    const url='https://pc5008-34/passwords_json/'+active_domain;
     xhr.open("GET", url);
     xhr.send();
     xhr.onreadystatechange = (e) => {
@@ -52,7 +52,7 @@ function get_pass(active_domain){
 // console.log(chrome.action.getBadgeText());
 button = document.getElementById("button_login");
 button.addEventListener("click", function() {
-    chrome.tabs.create({'url': "https://localhost/signin"});
+    chrome.tabs.create({'url': "https://pc5008-34/signin"});
 });
 
 // chrome.browserAction.onClicked.addListener(function() {
