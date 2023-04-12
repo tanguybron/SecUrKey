@@ -2,7 +2,15 @@ try {
     importScripts('./crypto-js.min.js');
   } catch (e) {
     console.error(e);
-  }    
+  }
+
+ function encrypting(password)
+  {
+      var passPhrase="shesh";
+      var encryptionResult = ""+CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(password), passPhrase);
+      to_return = encryptionResult.replaceAll("/" , "sheeeeeesh");
+      return to_return;
+  }  
 
 function getCookies(domain, name, callback) {
     chrome.cookies.get({ "url": domain, "name": name }, function (cookie) {
