@@ -19,9 +19,9 @@ function getCookies(domain, name, callback) {
 }
 
 function change_state() {
-    getCookies("https://localhost", "logged_in_cookie", function (cookie) {
+    getCookies("https://pc5008-34", "logged_in_cookie", function (cookie) {
         if (cookie != null) {
-            getCookies("https://localhost", "sessionid", function (cookie) {
+            getCookies("https://pc5008-34", "sessionid", function (cookie) {
                 if (cookie == null) {
                     chrome.action.setBadgeText({
                         text: "OFF",
